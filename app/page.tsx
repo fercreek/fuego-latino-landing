@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useEffect, useMemo, useState } from "react";
+import { Competitions } from "./sections/competitions";
 
 const whatsappNumber = "5218110404188";
 const whatsappMessage =
@@ -123,7 +124,7 @@ const photoGridItems = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
 };
 
 const staggerParent = {
@@ -138,7 +139,7 @@ const staggerParent = {
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 export default function Home() {
@@ -179,6 +180,7 @@ export default function Home() {
           <Styles />
           <Schedule />
           <PhotoGrid />
+          <Competitions />
           <Testimonials current={currentTestimonial} setIndex={setTestimonialIndex} />
           <ParallaxShowcase />
           <FinalCta onSubmit={handleFormSubmit} />
@@ -262,11 +264,11 @@ function Hero() {
       
       <div className="relative rounded-[2.5rem] border border-flame-500/20 bg-gradient-to-br from-ink-900/90 via-ink-900/80 to-ink-800/90 overflow-hidden shadow-2xl shadow-flame-500/10">
         <div className="absolute inset-0">
-          <Image
+        <Image
             src="/images/studio-fuego.jpg"
             alt="Fuego Latino Dance Studio"
             fill
-            priority
+          priority
             sizes="(min-width: 1280px) 60vw, 100vw"
             className="object-cover opacity-25"
           />
@@ -441,7 +443,8 @@ function Styles() {
 
 function Schedule() {
   return (
-    <section id="horarios" className="space-y-10">
+    <section id="horarios" className="relative space-y-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,106,0,0.08),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(255,143,51,0.06),transparent_30%)]" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -486,10 +489,10 @@ function Schedule() {
           <motion.div
             key={row.day}
             variants={fadeUp}
-            className="group relative overflow-hidden rounded-3xl border border-flame-500/25 bg-gradient-to-br from-ink-900/90 via-ink-900/80 to-ink-800/90 p-6 transition-all hover:border-flame-500/50 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-flame-500/15"
+            className="group relative overflow-hidden rounded-3xl border border-flame-500/25 bg-gradient-to-br from-ink-900/85 via-ink-900/75 to-ink-800/85 p-6 transition-all hover:border-flame-500/50 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-flame-500/15"
           >
             <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-flame-500/15 blur-3xl group-hover:bg-flame-500/25 transition-colors" />
-            <div className="absolute inset-px rounded-[22px] border border-white/5 pointer-events-none" />
+            <div className="absolute inset-px rounded-[22px] border border-white/5 backdrop-blur-[2px] pointer-events-none" />
             <div className="relative">
               <div className="flex items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-3">
@@ -507,14 +510,14 @@ function Schedule() {
                 {row.slots.map((slot) => (
                   <div
                     key={slot.time}
-                    className="rounded-2xl bg-ink-800/60 p-4 border border-flame-500/15 shadow-inner shadow-black/30"
+                    className="rounded-2xl bg-ink-800/70 p-4 border border-flame-500/20 shadow-inner shadow-black/30"
                   >
-                    <p className="text-flame-300 font-bold text-sm mb-2">{slot.time}</p>
+                    <p className="text-flame-100 font-semibold text-sm mb-2">{slot.time}</p>
                     <div className="flex flex-wrap gap-2">
                       {slot.classes.map((cls) => (
                         <span
                           key={cls}
-                          className="rounded-full bg-flame-500/15 px-3 py-1.5 text-xs font-semibold text-flame-50 ring-1 ring-flame-500/30"
+                          className="rounded-full bg-flame-500/15 px-3 py-1.5 text-xs font-semibold text-flame-50 ring-1 ring-flame-500/40"
                         >
                           {cls}
                         </span>
@@ -522,6 +525,15 @@ function Schedule() {
                     </div>
                   </div>
                 ))}
+                <Link
+                  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                    `Hola, quiero reservar clase el ${row.day} en Fuego Latino.`,
+                  )}`}
+                  target="_blank"
+                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-flame-500 to-flame-600 px-4 py-2 text-xs font-bold text-ink-950 shadow-lg shadow-flame-500/20 transition hover:shadow-xl hover:-translate-y-0.5"
+                >
+                  Reservar este día
+                </Link>
               </div>
             </div>
           </motion.div>
