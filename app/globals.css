@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050507;
+  --foreground: #f8fafc;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #050507;
+  --color-foreground: #f8fafc;
+  --color-flame-50: #fff5eb;
+  --color-flame-100: #ffe5cc;
+  --color-flame-200: #ffc999;
+  --color-flame-300: #ffac66;
+  --color-flame-400: #ff8f33;
+  --color-flame-500: #ff6a00;
+  --color-flame-600: #e55d00;
+  --color-flame-700: #b34700;
+  --color-flame-800: #733000;
+  --color-ink-600: #2a2a38;
+  --color-ink-700: #1f1f2b;
+  --color-ink-800: #13131a;
+  --color-ink-900: #0b0b0f;
+  --color-ink-950: #030305;
+  --color-amber-400: #ffb84d;
+  --color-amber-500: #ff9f1a;
+  --color-red-500: #ef4444;
+  --color-orange-500: #f97316;
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 106, 0, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 143, 51, 0.08), transparent),
+    linear-gradient(180deg, #080810 0%, #050507 100%);
+  background-attachment: fixed;
+  color: #f8fafc;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #ff6a00;
+  color: #050507;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6a00, #e55d00);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff8f33, #ff6a00);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 106, 0, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 106, 0, 0.5); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Fuego Latino logo">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6a00" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#ff6a00" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#050507" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8f33"/>
+      <stop offset="100%" stop-color="#ff6a00"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#050507"/>
+  <circle cx="400" cy="400" r="360" fill="url(#glow)" stroke="url(#stroke)" stroke-width="16"/>
+  <text x="400" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="108" fill="#ff8f33" letter-spacing="3">Fuego</text>
+  <text x="400" y="440" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="102" fill="#ff6a00" letter-spacing="2">Latino</text>
+  <text x="400" y="505" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="30" fill="#ffcf66" letter-spacing="6">DANCE STUDIO</text>
+</svg>
+
+
