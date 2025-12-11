@@ -389,7 +389,7 @@ function Hero() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-flame-500/10 via-transparent to-transparent" />
         </div>
         
-        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20">
+        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20" style={{ borderRadius: '199px' }}>
           <motion.div
             variants={staggerParent}
             initial="hidden"
@@ -449,8 +449,8 @@ function Hero() {
               <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-flame-500/20 to-flame-600/10 blur-2xl" />
               <div className="relative overflow-hidden rounded-3xl border border-flame-500/20 bg-ink-900/80 shadow-2xl">
                 <Image
-                  src="/images/fuego-4.jpg"
-                  alt="Show de baile Fuego Latino Dance Studio - Bailarines en presentación"
+                  src="/images/studio-fuego.jpg"
+                  alt="Fuego Latino Dance Studio - Estudio de baile latino moderno en Monterrey"
                   width={1200}
                   height={1600}
                   className="h-[380px] w-full object-cover object-top"
@@ -768,7 +768,7 @@ function PhotoGrid() {
               className="object-cover transition-all duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute inset-0 bg-flame-500/0 group-hover:bg-flame-500/10 transition-colors duration-500" />
+            <div className="absolute inset-0 bg-flame-500/0 group-hover:bg-flame-500/10 transition-colors duration-500" style={{ left: '4px', top: '32px' }} />
             <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
               <p className="text-sm font-bold text-flame-100 drop-shadow-lg">{item.alt}</p>
             </div>

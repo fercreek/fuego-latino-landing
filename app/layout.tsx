@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://fuego-latino-landing.vercel.app"),
+  metadataBase: new URL("https://fuegolatino.dance"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: "https://fuego-latino-landing.vercel.app",
+    url: "https://fuegolatino.dance",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
       "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis.",
@@ -97,9 +97,9 @@ export default function RootLayout({
     name: "Fuego Latino Dance Studio",
     description:
       "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida.",
-    url: "https://fuego-latino-landing.vercel.app",
-    logo: "https://fuego-latino-landing.vercel.app/logo.png",
-    image: "https://fuego-latino-landing.vercel.app/images/studio-fuego.jpg",
+    url: "https://fuegolatino.dance",
+    logo: "https://fuegolatino.dance/logo.png",
+    image: "https://fuegolatino.dance/images/studio-fuego.jpg",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Monterrey",

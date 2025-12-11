@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fuego-latino-landing.vercel.app'
+  const baseUrl = 'https://fuegolatino.dance'
 
   return [
     {
@@ -36,4 +36,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
+
 

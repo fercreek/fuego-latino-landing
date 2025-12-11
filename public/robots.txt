@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fuego-latino-landing.vercel.app/sitemap.xml
+Sitemap: https://fuegolatino.dance/sitemap.xml
 
