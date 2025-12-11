@@ -263,4 +263,3 @@ function ResultsGrid({ results }: { results: MedalResults }) {
     </motion.div>
   );
 }
-

@@ -173,7 +173,7 @@ export default function Home() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState({ loading: true, error: "", success: false });
-    
+
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name")?.toString().trim() || "";
     const email = formData.get("email")?.toString().trim() || "";
@@ -191,7 +191,7 @@ export default function Home() {
 
     const message = `Hola, soy ${name}${email ? ` (${email})` : ""}. Quiero info sobre ${interest || "clases"} en Fuego Latino.`;
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
+
     setTimeout(() => {
       window.open(url, "_blank");
       setFormState({ loading: false, error: "", success: true });
@@ -259,7 +259,7 @@ function Header() {
 
   return (
     <>
-      <div 
+      <div
         className="fixed top-0 left-0 right-0 h-1 bg-flame-500/20 z-50"
         style={{ transform: `scaleX(${scrollProgress / 100})`, transformOrigin: 'left' }}
       />
@@ -374,7 +374,7 @@ function Hero() {
     <section id="hero" className="relative">
       <div className="absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full bg-flame-500/10 blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full bg-flame-600/10 blur-[100px] pointer-events-none" />
-      
+
       <div className="relative rounded-[2.5rem] border border-flame-500/20 bg-gradient-to-br from-ink-900/90 via-ink-900/80 to-ink-800/90 overflow-hidden shadow-2xl shadow-flame-500/10">
         <div className="absolute inset-0">
         <Image
@@ -388,7 +388,7 @@ function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-flame-500/10 via-transparent to-transparent" />
         </div>
-        
+
         <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20" style={{ borderRadius: '199px' }}>
           <motion.div
             variants={staggerParent}
@@ -402,7 +402,7 @@ function Hero() {
                 Clase muestra sin costo
               </span>
             </motion.div>
-            
+
             <motion.h1
               variants={fadeUp}
               className="text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
@@ -413,7 +413,7 @@ function Hero() {
                 moderno en MTY
               </span>
             </motion.h1>
-            
+
             <motion.p
               variants={fadeUp}
               className="text-xl leading-relaxed text-foreground/80 max-w-lg font-medium"
@@ -421,7 +421,7 @@ function Hero() {
               Salsa, bachata, urbano, jazz y contemporáneo en un espacio seguro y cálido.
               Comunidad que acompaña tu proceso, cero juicios y mucho ritmo.
             </motion.p>
-            
+
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
               <Link
                 href={whatsappLink}
@@ -439,7 +439,7 @@ function Hero() {
               </Link>
             </motion.div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.3 } }}
@@ -516,7 +516,7 @@ function SocialMedia() {
       <div className="relative overflow-hidden rounded-3xl border border-flame-500/30 bg-gradient-to-br from-ink-900/90 to-ink-800/90 p-8 sm:p-12 shadow-2xl shadow-flame-500/10">
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-flame-500/10 blur-[80px]" />
         <div className="absolute -left-20 -bottom-20 h-48 w-48 rounded-full bg-flame-600/10 blur-[60px]" />
-        
+
         <div className="relative text-center space-y-6">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-flame-400 mb-4">
@@ -529,7 +529,7 @@ function SocialMedia() {
               Mira nuestras clases, shows y momentos especiales en nuestras redes sociales.
             </p>
           </div>
-          
+
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="https://www.instagram.com/fuegolatino.dancestudio/"
@@ -597,7 +597,7 @@ function Styles() {
           Aprende pasos sociales, escenario y coreos. Grupos reducidos y acompañamiento personalizado.
         </p>
       </motion.div>
-      
+
       <motion.div
         variants={staggerParent}
         initial="hidden"
@@ -663,7 +663,7 @@ function Schedule() {
           </Link>
         </div>
       </motion.div>
-      
+
       <motion.div
         variants={staggerParent}
         initial="hidden"
@@ -805,11 +805,11 @@ function Testimonials({
           Alumnos de sociales, shows y competencias que ya bailan con seguridad.
         </p>
       </motion.div>
-      
+
       <div className="relative overflow-hidden rounded-3xl border border-flame-500/30 bg-gradient-to-br from-ink-900/95 to-ink-800/95 px-6 py-16 sm:px-12 shadow-2xl shadow-flame-500/20">
         <div className="absolute -left-16 -top-16 h-48 w-48 rounded-full bg-flame-500/10 blur-3xl" />
         <div className="absolute -right-16 -bottom-16 h-48 w-48 rounded-full bg-flame-600/10 blur-3xl" />
-        
+
         <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
@@ -828,7 +828,7 @@ function Testimonials({
               <p className="text-sm text-foreground/60 font-medium">{current.role}</p>
             </motion.div>
           </AnimatePresence>
-          
+
           <div className="mt-10 flex items-center justify-center gap-3">
             {testimonials.map((testimonial, idx) => (
               <button
@@ -869,7 +869,7 @@ function ParallaxShowcase() {
           Un espacio diseñado para que fluya tu baile.
         </p>
       </motion.div>
-      
+
       <div className="grid gap-5 lg:grid-cols-3">
         {gallery.map((item, idx) => (
           <Parallax speed={item.speed} key={item.src}>
@@ -901,10 +901,10 @@ function ParallaxShowcase() {
   );
 }
 
-function FinalCta({ 
-  onSubmit, 
-  formState 
-}: { 
+function FinalCta({
+  onSubmit,
+  formState
+}: {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   formState: { loading: boolean; error: string; success: boolean };
 }) {
@@ -913,7 +913,7 @@ function FinalCta({
       <div className="relative overflow-hidden rounded-[2.5rem] border border-flame-500/30 bg-gradient-to-br from-ink-900 via-ink-900/95 to-ink-800 p-8 sm:p-12 shadow-2xl shadow-flame-500/15">
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-flame-500/15 blur-[80px]" />
         <div className="absolute -left-20 -bottom-20 h-48 w-48 rounded-full bg-flame-600/10 blur-[60px]" />
-        
+
         <div className="relative grid gap-12 lg:grid-cols-2 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -945,7 +945,7 @@ function FinalCta({
               </a>
             </div>
           </motion.div>
-          
+
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
