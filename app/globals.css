@@ -96,6 +96,242 @@ a {
   50% { background-position: 100% 50%; }
 }
 
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  25% { opacity: 0.8; transform: scaleY(1.1); }
+  50% { opacity: 0.9; transform: scaleY(0.95); }
+  75% { opacity: 0.85; transform: scaleY(1.05); }
+}
+
+@keyframes burning-text {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(255, 106, 0, 0.5),
+      0 0 20px rgba(255, 143, 51, 0.4),
+      0 0 30px rgba(255, 106, 0, 0.3),
+      0 2px 4px rgba(255, 106, 0, 0.4),
+      0 -1px 3px rgba(255, 159, 26, 0.3);
+    filter: brightness(1);
+  }
+  25% {
+    text-shadow: 
+      0 0 12px rgba(255, 106, 0, 0.6),
+      0 0 22px rgba(255, 143, 51, 0.5),
+      0 0 35px rgba(255, 106, 0, 0.4),
+      0 3px 5px rgba(255, 106, 0, 0.5),
+      0 -2px 4px rgba(255, 159, 26, 0.4);
+    filter: brightness(1.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 8px rgba(255, 106, 0, 0.4),
+      0 0 18px rgba(255, 143, 51, 0.3),
+      0 0 28px rgba(255, 106, 0, 0.2),
+      0 1px 3px rgba(255, 106, 0, 0.3),
+      0 -1px 2px rgba(255, 159, 26, 0.25);
+    filter: brightness(0.95);
+  }
+  75% {
+    text-shadow: 
+      0 0 11px rgba(255, 106, 0, 0.55),
+      0 0 21px rgba(255, 143, 51, 0.45),
+      0 0 32px rgba(255, 106, 0, 0.35),
+      0 2px 4px rgba(255, 106, 0, 0.45),
+      0 -1px 3px rgba(255, 159, 26, 0.35);
+    filter: brightness(1.05);
+  }
+}
+
+.burning-text {
+  animation: burning-text 3s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes fire-flicker {
+  0%, 100% { 
+    opacity: 0.8; 
+    transform: scale(1) translateY(0) rotate(0deg);
+    filter: blur(0px);
+  }
+  10% { 
+    opacity: 1; 
+    transform: scale(1.05) translateY(-2px) rotate(1deg);
+    filter: blur(1px);
+  }
+  20% { 
+    opacity: 0.9; 
+    transform: scale(0.98) translateY(1px) rotate(-1deg);
+    filter: blur(0.5px);
+  }
+  30% { 
+    opacity: 0.95; 
+    transform: scale(1.02) translateY(-1px) rotate(0.5deg);
+    filter: blur(0.8px);
+  }
+  40% { 
+    opacity: 0.85; 
+    transform: scale(1.03) translateY(-3px) rotate(-0.5deg);
+    filter: blur(1.2px);
+  }
+  50% { 
+    opacity: 0.9; 
+    transform: scale(0.99) translateY(2px) rotate(1deg);
+    filter: blur(0.7px);
+  }
+  60% { 
+    opacity: 1; 
+    transform: scale(1.04) translateY(-2px) rotate(-1deg);
+    filter: blur(1px);
+  }
+  70% { 
+    opacity: 0.88; 
+    transform: scale(1.01) translateY(1px) rotate(0.8deg);
+    filter: blur(0.6px);
+  }
+  80% { 
+    opacity: 0.92; 
+    transform: scale(1.06) translateY(-4px) rotate(-0.8deg);
+    filter: blur(1.3px);
+  }
+  90% { 
+    opacity: 0.87; 
+    transform: scale(0.97) translateY(3px) rotate(1.2deg);
+    filter: blur(0.9px);
+  }
+}
+
+@keyframes fire-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.3),
+                0 0 40px rgba(255, 143, 51, 0.2),
+                0 0 60px rgba(255, 106, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 106, 0, 0.5),
+                0 0 60px rgba(255, 143, 51, 0.3),
+                0 0 90px rgba(255, 106, 0, 0.2);
+  }
+}
+
+.fire-effect {
+  background: 
+    radial-gradient(ellipse at 30% 50%, rgba(255, 106, 0, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 40%, rgba(255, 143, 51, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(255, 106, 0, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 70%, rgba(239, 68, 68, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 159, 26, 0.2) 0%, transparent 50%);
+  animation: fire-flicker 3s ease-in-out infinite;
+  filter: blur(2px);
+  mix-blend-mode: screen;
+}
+
+.fire-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 40% 45%, rgba(255, 143, 51, 0.35) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 55%, rgba(255, 106, 0, 0.3) 0%, transparent 45%),
+    radial-gradient(ellipse at 15% 65%, rgba(239, 68, 68, 0.25) 0%, transparent 50%);
+  animation: fire-flicker 2.5s ease-in-out infinite 0.5s;
+  filter: blur(3px);
+  mix-blend-mode: screen;
+}
+
+.fire-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(255, 159, 26, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 25% 35%, rgba(255, 106, 0, 0.25) 0%, transparent 55%);
+  animation: fire-flicker 3.5s ease-in-out infinite 1s;
+  filter: blur(4px);
+  mix-blend-mode: screen;
+}
+
+@keyframes gentle-fire-glow {
+  0%, 100% { 
+    text-shadow: 
+      0 0 10px rgba(255, 106, 0, 0.4),
+      0 0 20px rgba(255, 143, 51, 0.3),
+      0 0 30px rgba(255, 106, 0, 0.25),
+      0 2px 8px rgba(255, 106, 0, 0.4),
+      0 -2px 6px rgba(255, 159, 26, 0.3),
+      2px 0 8px rgba(255, 106, 0, 0.35),
+      -2px 0 8px rgba(255, 143, 51, 0.3);
+  }
+  20% { 
+    text-shadow: 
+      0 0 12px rgba(255, 106, 0, 0.5),
+      0 0 22px rgba(255, 143, 51, 0.35),
+      0 0 35px rgba(255, 106, 0, 0.3),
+      0 3px 10px rgba(255, 106, 0, 0.45),
+      0 -1px 7px rgba(255, 159, 26, 0.35),
+      3px 0 10px rgba(255, 106, 0, 0.4),
+      -1px 0 9px rgba(255, 143, 51, 0.32);
+  }
+  40% { 
+    text-shadow: 
+      0 0 8px rgba(255, 106, 0, 0.35),
+      0 0 18px rgba(255, 143, 51, 0.25),
+      0 0 28px rgba(255, 106, 0, 0.2),
+      0 1px 6px rgba(255, 106, 0, 0.3),
+      0 -3px 8px rgba(255, 159, 26, 0.25),
+      1px 0 7px rgba(255, 106, 0, 0.3),
+      -3px 0 9px rgba(255, 143, 51, 0.25);
+  }
+  60% { 
+    text-shadow: 
+      0 0 11px rgba(255, 106, 0, 0.45),
+      0 0 21px rgba(255, 143, 51, 0.32),
+      0 0 32px rgba(255, 106, 0, 0.28),
+      0 2px 9px rgba(255, 106, 0, 0.4),
+      0 -2px 7px rgba(255, 159, 26, 0.32),
+      2px 0 9px rgba(255, 106, 0, 0.38),
+      -2px 0 8px rgba(255, 143, 51, 0.3);
+  }
+  80% { 
+    text-shadow: 
+      0 0 9px rgba(255, 106, 0, 0.38),
+      0 0 19px rgba(255, 143, 51, 0.28),
+      0 0 29px rgba(255, 106, 0, 0.22),
+      0 1px 7px rgba(255, 106, 0, 0.33),
+      0 -2px 6px rgba(255, 159, 26, 0.28),
+      1px 0 8px rgba(255, 106, 0, 0.33),
+      -2px 0 7px rgba(255, 143, 51, 0.27);
+  }
+}
+
+.fire-text-effect {
+  animation: gentle-fire-glow 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 106, 0, 0.4));
+  position: relative;
+}
+
+.fire-text-effect::before {
+  content: 'moderno en MTY';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 106, 0, 0.1) 20%,
+    rgba(255, 143, 51, 0.15) 50%,
+    rgba(255, 106, 0, 0.1) 80%,
+    transparent 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gentle-fire-glow 3s ease-in-out infinite 0.15s;
+  z-index: -1;
+  filter: blur(1px);
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }

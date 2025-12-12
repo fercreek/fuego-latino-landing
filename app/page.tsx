@@ -47,7 +47,7 @@ const stylesOffered = [
     name: "Urbano",
     emoji: "🔊",
     description: "Reggaetón y comercial para soltar energía.",
-    level: "Intermedio",
+    level: "Básico",
     gradient: "from-red-500/20 to-flame-500/10",
   },
   {
@@ -213,6 +213,7 @@ export default function Home() {
           <Styles />
           <Schedule />
           <PhotoGrid />
+          <GalleryCategories />
           <Competitions />
           {/* <Testimonials current={currentTestimonial} setIndex={setTestimonialIndex} /> */}
           <ParallaxShowcase />
@@ -386,15 +387,25 @@ function Hero() {
             className="object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-flame-500/10 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-flame-500/10 via-transparent to-transparent" style={{ left: '4px', top: '32px' }} />
         </div>
 
-        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20" style={{ borderRadius: '199px' }}>
+        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20 overflow-hidden" style={{ borderRadius: '199px' }}>
+          <div className="absolute inset-0 -z-10 pointer-events-none" style={{ borderRadius: '199px' }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-transparent via-flame-500/15 to-transparent animate-pulse" />
+            <div className="absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-flame-600/25 via-flame-500/15 to-transparent blur-2xl" style={{ animation: 'flicker 3s ease-in-out infinite' }} />
+            <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-amber-500/25 via-flame-400/15 to-transparent blur-2xl" style={{ animation: 'flicker 2s ease-in-out infinite 0.5s' }} />
+            <div className="absolute bottom-0 left-1/4 h-2/3 w-1/2 bg-gradient-to-t from-flame-500/20 via-flame-400/12 to-transparent blur-3xl" style={{ animation: 'flicker 2.5s ease-in-out infinite 1s' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-3/4 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-flame-500/15 via-flame-400/8 to-transparent blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 right-1/4 h-3/4 w-1/3 bg-gradient-to-t from-flame-600/18 via-flame-500/10 to-transparent blur-3xl" style={{ animation: 'flicker 2.2s ease-in-out infinite 0.3s' }} />
+            <div className="absolute top-0 left-1/3 h-1/2 w-1/3 bg-gradient-to-b from-flame-500/20 via-flame-400/10 to-transparent blur-2xl" style={{ animation: 'flicker 2.8s ease-in-out infinite 0.7s' }} />
+            <div className="absolute bottom-1/4 left-0 h-1/2 w-1/4 bg-gradient-to-r from-flame-600/20 to-transparent blur-2xl" style={{ animation: 'flicker 2.3s ease-in-out infinite 0.4s' }} />
+          </div>
           <motion.div
             variants={staggerParent}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-8 relative z-10"
           >
             <motion.div variants={fadeUp} className="flex items-center gap-3">
               <span className="inline-flex items-center gap-2 rounded-full bg-flame-500/15 px-4 py-2 text-sm font-semibold text-flame-100 ring-1 ring-flame-500/30 backdrop-blur-sm">
@@ -409,7 +420,7 @@ function Hero() {
             >
               <span className="text-foreground drop-shadow-lg">Baile latino</span>
               <br />
-              <span className="bg-gradient-to-r from-flame-400 via-flame-500 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,106,0,0.5)]">
+              <span className="bg-gradient-to-r from-flame-400 via-flame-500 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,106,0,0.5)] burning-text">
                 moderno en MTY
               </span>
             </motion.h1>
@@ -443,7 +454,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.3 } }}
-            className="relative flex items-center justify-center lg:justify-end"
+            className="relative flex items-center justify-center lg:justify-end z-10"
           >
             <div className="relative w-full max-w-md">
               <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-flame-500/20 to-flame-600/10 blur-2xl" />
@@ -493,10 +504,15 @@ function Highlights() {
           className="group relative overflow-hidden rounded-2xl border border-flame-500/25 bg-gradient-to-br from-ink-900/95 to-ink-800/95 p-7 transition-all duration-300 hover:border-flame-500/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-flame-500/20 hover:scale-[1.02]"
         >
           <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-flame-500/10 blur-2xl group-hover:bg-flame-500/20 transition-colors" />
+          <div className="absolute inset-0 bg-flame-500/0 group-hover:bg-flame-500/10 transition-colors duration-500" style={{ left: '4px', top: '32px' }} />
           <div className="relative">
-            <span className="text-4xl mb-5 block transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">{item.icon}</span>
-            <p className="text-xl font-bold text-flame-100 mb-2">{item.title}</p>
-            <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{item.detail}</p>
+            <div className="flex items-start gap-3 mb-2">
+              <span className="text-4xl transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 flex-shrink-0">{item.icon}</span>
+              <div className="flex-1">
+                <p className="text-xl font-bold text-flame-100 mb-2">{item.title}</p>
+                <p className="text-sm text-foreground/70 leading-relaxed">{item.detail}</p>
+              </div>
+            </div>
           </div>
         </motion.div>
       ))}
@@ -775,6 +791,101 @@ function PhotoGrid() {
           </motion.div>
         ))}
       </div>
+    </section>
+  );
+}
+
+function GalleryCategories() {
+  const categories = [
+    {
+      id: "brisa-cup",
+      title: "Brisa Cup",
+      image: "/images/brisa-cup/brisa2025_1.jpeg",
+      gradient: "from-blue-500/20 to-flame-500/10",
+    },
+    {
+      id: "fuego-clases",
+      title: "Fuego Clases",
+      image: "/images/fuego-clases/clase1.jpeg",
+      gradient: "from-flame-500/20 to-amber-500/10",
+    },
+    {
+      id: "fuego-ladies",
+      title: "Fuego Ladies",
+      image: "/images/fuego-ladies/ladies1.jpeg",
+      gradient: "from-pink-500/20 to-flame-500/10",
+    },
+    {
+      id: "mambolee-one",
+      title: "Mambolee One",
+      image: "/images/mambolee-one/mambole2025_1.jpeg",
+      gradient: "from-purple-500/20 to-flame-500/10",
+    },
+  ];
+
+  return (
+    <section className="space-y-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center max-w-2xl mx-auto"
+      >
+        <p className="text-sm font-bold uppercase tracking-[0.25em] text-flame-400 mb-4">
+          Galerías
+        </p>
+        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-5">
+          <span className="bg-gradient-to-r from-flame-100 to-flame-300 bg-clip-text text-transparent">Nuestros eventos y clases</span>
+        </h2>
+        <p className="text-lg text-foreground/70 font-medium">
+          Explora nuestras galerías de eventos, competencias y clases.
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={staggerParent}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {categories.map((category) => (
+          <motion.div
+            key={category.id}
+            variants={fadeUp}
+          >
+            <Link
+              href={`/gallery/${category.id}`}
+              className={`group relative overflow-hidden rounded-2xl border border-flame-500/25 bg-gradient-to-br ${category.gradient} transition-all duration-300 hover:border-flame-500/50 hover:-translate-y-3 hover:shadow-2xl hover:shadow-flame-500/25 hover:scale-[1.03] block`}
+            >
+              <div className="relative h-[280px] sm:h-[320px]">
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  loading="lazy"
+                  className="object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-flame-500/0 group-hover:bg-flame-500/10 transition-colors duration-500" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-2xl font-bold text-flame-100 mb-2 drop-shadow-lg">
+                  {category.title}
+                </h3>
+                <p className="text-sm text-flame-200/80 flex items-center gap-2 group-hover:translate-x-1 transition-transform duration-300">
+                  Ver galería
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </p>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }
