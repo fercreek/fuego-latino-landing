@@ -17,6 +17,10 @@ const faqItems = [
     whatsappLink: "https://wa.me/528117655605",
   },
   {
+    question: "¿Cuánto cuesta inscribirse a la competencia?",
+    answer: "INSCRIPCIÓN SOLISTA: El solista tendrá que pagar $400 mxn de inscripción a la competencia por categoría, además de su Dancer Pass.\n\nINSCRIPCIÓN PAREJA o DÚO: La pareja o dúo tendrá que pagar $900 mxn por inscripción a la competencia por categoría, además de su Dancer Pass.\n\nINSCRIPCIÓN GRUPO: Cada integrante deberá pagar $400 mxn de inscripción por categoría, además de su Dancer Pass.\n\nFecha límite de inscripción: 27 de Enero de 2026.",
+  },
+  {
     question: "¿Cuánto cuesta el vestuario?",
     answer: "Nosotros compramos todos los materiales juntos (telas, piedras, pegamento, etc.) para que sea más barato. Si cada quien comprara por separado sería más caro. Al comprar en grupo, todos ahorramos dinero y además nos vemos iguales como equipo.",
   },
@@ -27,6 +31,14 @@ const faqItems = [
   {
     question: "¿Hay que pagar hotel o transporte?",
     answer: "Para este evento NO hay que pagar hotel ni transporte. Cada quien solo paga lo que quiera gastar personalmente (como si quieres quedarte en un hotel más lujo o comprar algo extra).",
+  },
+  {
+    question: "¿Cuánto dura la música para cada categoría?",
+    answer: "PAREJAS y DÚOS: Mínimo de 1:30 minutos a máximo de 2:30 minutos (incluyendo intro).\n\nGRUPOS: Mínimo de 2:00 minutos a máximo de 3:00 minutos.\n\nSOLISTAS: Mínimo de 1:10 minutos a máximo de 2:00 minutos.",
+  },
+  {
+    question: "Notas generales importantes",
+    answer: "1. Los competidores deberán presentarse 1:30 horas antes de iniciar las competencias que dan inicio a las 10 a.m. aproximadamente del Jueves, Viernes y Sábado 2 pm.\n\n2. En interés del bienestar físico de nuestros bailarines se brindará servicio de primeros auxilios durante las competencias y shows. Sin embargo, la organización de Mambolee ONE no se hace responsable por gastos médicos de lesiones o accidentes. Todos los gastos médicos corren por cuenta de los asistentes.",
   },
 ];
 
@@ -126,7 +138,7 @@ export default function MamboleeOnePage() {
       content: (
         <div className="space-y-4 sm:space-y-6">
           <p className="text-base sm:text-lg text-foreground/70">
-            Estas son las fechas límite que debes tener en cuenta:
+            Estas son las fechas límite y las fechas del evento que debes tener en cuenta:
           </p>
           <div className="space-y-4">
             <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-br from-flame-500/20 to-flame-600/10 border-2 border-flame-500/40 space-y-2">
@@ -142,8 +154,26 @@ export default function MamboleeOnePage() {
               <div className="flex items-start gap-3">
                 <span className="text-2xl sm:text-3xl flex-shrink-0">📅</span>
                 <div className="flex-1">
-                  <h4 className="text-lg sm:text-xl font-bold text-flame-100 mb-1">30 de enero</h4>
+                  <h4 className="text-lg sm:text-xl font-bold text-flame-100 mb-1">27 de enero de 2026</h4>
                   <p className="text-base sm:text-lg text-foreground/80">Fecha límite de inscripción</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 border-2 border-blue-500/40 space-y-2">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl sm:text-3xl flex-shrink-0">🏆</span>
+                <div className="flex-1">
+                  <h4 className="text-lg sm:text-xl font-bold text-blue-200 mb-1">Jueves 12 de febrero desde las 10 AM</h4>
+                  <p className="text-base sm:text-lg text-foreground/80">ELIMINATORIA</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 border-2 border-amber-500/40 space-y-2">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl sm:text-3xl flex-shrink-0">🎯</span>
+                <div className="flex-1">
+                  <h4 className="text-lg sm:text-xl font-bold text-amber-200 mb-1">Viernes 13 y Sábado 14 de febrero desde las 2 PM</h4>
+                  <p className="text-base sm:text-lg text-foreground/80">FINALES</p>
                 </div>
               </div>
             </div>
@@ -280,7 +310,7 @@ export default function MamboleeOnePage() {
                   ) : req.titulo === "Pago de inscripciones" ? (
                     <>
                       Revisa el reglamento para conocer los detalles del pago de inscripciones.{" "}
-                      <span className="font-bold text-flame-300">Fecha límite: 30 de enero</span>.
+                      <span className="font-bold text-flame-300">Fecha límite: 27 de enero de 2026</span>.
                     </>
                   ) : (
                     req.descripcion
