@@ -26,7 +26,7 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
       const index = items.findIndex((item) => item.id === hash);
       if (index !== -1) {
         setOpenIndexes((prev) => {
-          const newSet = allowMultiple ? new Set(prev) : new Set();
+          const newSet = allowMultiple ? new Set<number>(prev) : new Set<number>();
           newSet.add(index);
           return newSet;
         });
