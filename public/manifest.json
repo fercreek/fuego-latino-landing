@@ -1,0 +1,22 @@
+{
+  "name": "Fuego Latino Dance Studio",
+  "short_name": "Fuego Latino",
+  "description": "Clases de baile latino en Monterrey - Salsa, Bachata, Urbano, Jazz y Contemporáneo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#ff6a00",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
