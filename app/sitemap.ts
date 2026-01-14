@@ -2,37 +2,30 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://fuegolatino.dance'
+  const now = new Date()
+
+  const galleryCategories = [
+    'brisa-cup',
+    'fuego-clases',
+    'fuego-ladies',
+    'mambolee-one',
+  ]
+
+  const galleryPages = galleryCategories.map((category) => ({
+    url: `${baseUrl}/gallery/${category}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
 
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${baseUrl}/#hero`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/#estilos`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#horarios`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#contacto`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
+    ...galleryPages,
   ]
 }
+

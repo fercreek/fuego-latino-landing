@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Fuego Latino Dance Studio",
   },
   description:
-    "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis. Fuego Latino Dance Studio - Tu estudio de baile latino en MTY.",
+    "Fuego Latino Dance Studio: Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey, Nuevo León. Espacio seguro, instructores profesionales y comunidad cálida. Clase muestra gratis. Tu estudio de baile latino moderno en MTY.",
   keywords: [
     "clases de baile monterrey",
     "salsa monterrey",
@@ -44,9 +44,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/logo.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "es_MX",
+    alternateLocale: ["es"],
     url: "https://fuegolatino.dance",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
@@ -54,10 +65,11 @@ export const metadata: Metadata = {
     siteName: "Fuego Latino Dance Studio",
     images: [
       {
-        url: "/images/studio-fuego.jpg",
+        url: "https://fuegolatino.dance/images/studio-fuego.jpg",
         width: 1200,
         height: 630,
-        alt: "Fuego Latino Dance Studio - Estudio de baile en Monterrey",
+        alt: "Fuego Latino Dance Studio - Estudio de baile latino moderno en Monterrey, Nuevo León",
+        type: "image/jpeg",
       },
     ],
   },
@@ -65,8 +77,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
-      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Agenda tu clase muestra gratis.",
-    images: ["/images/studio-fuego.jpg"],
+      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis.",
+    images: [
+      {
+        url: "https://fuegolatino.dance/images/studio-fuego.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Fuego Latino Dance Studio - Estudio de baile latino moderno en Monterrey",
+      },
+    ],
+    creator: "@fuegolatino.dancestudio",
   },
   robots: {
     index: true,
@@ -83,6 +103,11 @@ export const metadata: Metadata = {
     // Agregar cuando tengas los códigos de verificación
     // google: "tu-codigo-google",
     // yandex: "tu-codigo-yandex",
+    // bing: "tu-codigo-bing",
+  },
+  other: {
+    "msvalidate.01": "", // Agregar código de Bing cuando esté disponible
+    "yandex-verification": "", // Agregar código de Yandex cuando esté disponible
   },
 };
 
@@ -93,25 +118,41 @@ export default function RootLayout({
 }>) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "DanceSchool",
+    "@type": ["DanceSchool", "LocalBusiness", "School"],
     name: "Fuego Latino Dance Studio",
     description:
-      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida.",
+      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis.",
     url: "https://fuegolatino.dance",
     logo: "https://fuegolatino.dance/logo.png",
-    image: "https://fuegolatino.dance/images/studio-fuego.jpg",
+    image: [
+      "https://fuegolatino.dance/images/studio-fuego.jpg",
+      "https://fuegolatino.dance/logo.png",
+    ],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Monterrey",
       addressRegion: "Nuevo León",
       addressCountry: "MX",
+      streetAddress: "Monterrey, Nuevo León",
     },
     telephone: "+52 1 81 1040 4188",
     priceRange: "$$",
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Thursday"],
+        dayOfWeek: ["Monday", "Wednesday"],
+        opens: "20:00",
+        closes: "22:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Tuesday"],
+        opens: "20:00",
+        closes: "21:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Thursday"],
         opens: "20:00",
         closes: "22:00",
       },
@@ -120,12 +161,18 @@ export default function RootLayout({
       "https://www.instagram.com/fuegolatino.dancestudio/",
       "https://www.facebook.com/FuegoLatinoDS",
     ],
+    areaServed: {
+      "@type": "City",
+      name: "Monterrey",
+    },
     offers: {
       "@type": "Offer",
       name: "Clase muestra gratis",
       description: "Clase muestra sin costo para nuevos estudiantes",
       price: "0",
       priceCurrency: "MXN",
+      availability: "https://schema.org/InStock",
+      url: "https://fuegolatino.dance#contacto",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -136,7 +183,11 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Clases de Salsa",
-            description: "Footwork limpio, musicalidad y conexiones sociales",
+            description: "Footwork limpio, musicalidad y conexiones sociales. Todos los niveles.",
+            provider: {
+              "@type": "Organization",
+              name: "Fuego Latino Dance Studio",
+            },
           },
         },
         {
@@ -144,7 +195,11 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Clases de Bachata Sensual",
-            description: "Flow caribeño, body rolls y giros suaves",
+            description: "Flow caribeño, body rolls y giros suaves. Niveles básico e intermedio.",
+            provider: {
+              "@type": "Organization",
+              name: "Fuego Latino Dance Studio",
+            },
           },
         },
         {
@@ -152,7 +207,11 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Clases de Baile Urbano",
-            description: "Reggaetón y comercial para soltar energía",
+            description: "Reggaetón y comercial para soltar energía. Nivel básico.",
+            provider: {
+              "@type": "Organization",
+              name: "Fuego Latino Dance Studio",
+            },
           },
         },
         {
@@ -160,7 +219,11 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Clases de Jazz & Contemporáneo",
-            description: "Líneas largas, técnica y flow escénico para adultos",
+            description: "Líneas largas, técnica y flow escénico para adultos.",
+            provider: {
+              "@type": "Organization",
+              name: "Fuego Latino Dance Studio",
+            },
           },
         },
       ],
