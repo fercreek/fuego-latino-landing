@@ -8,6 +8,7 @@ import { Footer } from "../../components/Footer";
 import { ScrollToTop } from "../../components/ScrollToTop";
 import { WhatsAppFloat } from "../../components/WhatsAppFloat";
 import { Accordion } from "../../components/Accordion";
+import { Calculator } from "../../components/Calculator";
 import { whatsappLink } from "../../constants";
 
 const faqItems = [
@@ -108,6 +109,7 @@ export default function MamboleeOnePage() {
 
   const accordionItems = [
     {
+      id: "horarios",
       title: "📅 Horarios de Competencia",
       defaultOpen: true,
       content: (
@@ -133,6 +135,7 @@ export default function MamboleeOnePage() {
       ),
     },
     {
+      id: "fechas",
       title: "📆 Fechas Importantes",
       defaultOpen: false,
       content: (
@@ -182,6 +185,7 @@ export default function MamboleeOnePage() {
       ),
     },
     {
+      id: "costos",
       title: "💰 Información General: Costos y Dinámica",
       defaultOpen: false,
       content: (
@@ -211,6 +215,20 @@ export default function MamboleeOnePage() {
       ),
     },
     {
+      id: "calculadora",
+      title: "🧮 Calculadora de Costos",
+      defaultOpen: false,
+      content: (
+        <div className="space-y-4 sm:space-y-6">
+          <p className="text-base sm:text-lg text-foreground/70">
+            Calcula el costo total de tu participación en la competencia. El Dancer Pass es obligatorio y puedes agregar las categorías en las que te inscribas.
+          </p>
+          <Calculator />
+        </div>
+      ),
+    },
+    {
+      id: "checklist",
       title: "✅ Checklist del Competidor",
       defaultOpen: false,
       content: (
@@ -252,6 +270,7 @@ export default function MamboleeOnePage() {
       ),
     },
     {
+      id: "ubicacion",
       title: "📍 Ubicación del Evento",
       defaultOpen: false,
       content: (
@@ -289,6 +308,7 @@ export default function MamboleeOnePage() {
       ),
     },
     {
+      id: "requerimientos",
       title: "📋 Requerimientos Previos al Evento",
       defaultOpen: false,
       content: (

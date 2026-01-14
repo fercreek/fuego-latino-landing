@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface AccordionItem {
   title: string;
   content: React.ReactNode;
   defaultOpen?: boolean;
+  id?: string;
 }
 
 interface AccordionProps {
@@ -19,16 +20,43 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
     new Set(items.map((item, index) => (item.defaultOpen ? index : -1)).filter((i) => i !== -1))
   );
 
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const index = items.findIndex((item) => item.id === hash);
+      if (index !== -1) {
+        setOpenIndexes((prev) => {
+          const newSet = allowMultiple ? new Set(prev) : new Set();
+          newSet.add(index);
+          return newSet;
+        });
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 300);
+      }
+    }
+  }, [items, allowMultiple]);
+
   const toggleItem = (index: number) => {
     setOpenIndexes((prev) => {
       const newSet = new Set(prev);
+      const item = items[index];
       if (newSet.has(index)) {
         newSet.delete(index);
+        if (item.id && window.location.hash === `#${item.id}`) {
+          window.history.pushState(null, "", window.location.pathname);
+        }
       } else {
         if (!allowMultiple) {
           newSet.clear();
         }
         newSet.add(index);
+        if (item.id) {
+          window.history.pushState(null, "", `#${item.id}`);
+        }
       }
       return newSet;
     });
@@ -41,7 +69,8 @@ export function Accordion({ items, allowMultiple = false }: AccordionProps) {
         return (
           <div
             key={index}
-            className="relative overflow-hidden rounded-2xl border border-flame-500/25 bg-gradient-to-br from-ink-900/95 to-ink-800/95 transition-all duration-300 hover:border-flame-500/50 hover:shadow-2xl hover:shadow-flame-500/20"
+            id={item.id}
+            className="relative overflow-hidden rounded-2xl border border-flame-500/25 bg-gradient-to-br from-ink-900/95 to-ink-800/95 transition-all duration-300 hover:border-flame-500/50 hover:shadow-2xl hover:shadow-flame-500/20 scroll-mt-20"
           >
             <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-flame-500/10 blur-2xl" />
             <button

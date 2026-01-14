@@ -3,16 +3,18 @@
 import { useState } from "react";
 
 const PRICES = {
-  dancerPass: 500,
-  category: 200,
+  dancerPass: 2199,
+  solista: 400,
+  pareja: 900,
+  grupo: 400,
 };
 
 const CATEGORIES = [
-  { id: "bachata-men-shines", name: "Bachata Men Shines" },
-  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas" },
-  { id: "bachata-ladies", name: "Bachata Ladies" },
-  { id: "bachata-parejas", name: "Bachata Parejas" },
-  { id: "bachata-solistas", name: "Bachata Solistas" },
+  { id: "bachata-men-shines", name: "Bachata Men Shines", type: "solista", price: PRICES.solista },
+  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas", type: "grupo", price: PRICES.grupo },
+  { id: "bachata-ladies", name: "Bachata Ladies", type: "solista", price: PRICES.solista },
+  { id: "bachata-parejas", name: "Bachata Parejas", type: "pareja", price: PRICES.pareja / 2 },
+  { id: "bachata-solistas", name: "Bachata Solistas", type: "solista", price: PRICES.solista },
 ];
 
 export function Calculator() {
@@ -30,11 +32,15 @@ export function Calculator() {
     });
   };
 
-  const categoriesCost = selectedCategories.size * PRICES.category;
+  const categoriesCost = Array.from(selectedCategories).reduce((total, categoryId) => {
+    const category = CATEGORIES.find((cat) => cat.id === categoryId);
+    return total + (category?.price || 0);
+  }, 0);
+
   const total = PRICES.dancerPass + categoriesCost;
 
   return (
-    <div className="space-y-6">
+      <div className="space-y-6">
       <div className="space-y-4">
         <div className="p-4 sm:p-5 rounded-xl bg-ink-800/50 border border-flame-500/20">
           <label className="flex items-start gap-3 cursor-pointer group">
@@ -56,30 +62,30 @@ export function Calculator() {
 
         <div className="space-y-3">
           <h4 className="text-base sm:text-lg font-semibold text-flame-200 mb-3">Categorías adicionales</h4>
-          {CATEGORIES.map((category) => {
-            const isSelected = selectedCategories.has(category.id);
-            return (
-              <div
-                key={category.id}
-                className="p-4 sm:p-5 rounded-xl bg-ink-800/50 border border-flame-500/20 hover:border-flame-500/40 transition-colors"
-              >
-                <label className="flex items-start gap-3 cursor-pointer group">
-                  <input
-                    type="checkbox"
-                    checked={isSelected}
-                    onChange={() => handleCategoryToggle(category.id)}
-                    className="mt-1 w-5 h-5 sm:w-6 sm:h-6 rounded border-2 border-flame-500/50 bg-flame-500/10 text-flame-500 focus:ring-2 focus:ring-flame-500/50 cursor-pointer transition-all checked:bg-flame-500 checked:border-flame-500"
-                  />
-                  <div className="flex-1 flex items-center justify-between">
-                    <span className={`text-base sm:text-lg ${isSelected ? "text-flame-100 font-medium" : "text-foreground/80"}`}>
-                      {category.name}
-                    </span>
-                    <span className="text-base sm:text-lg font-semibold text-flame-300">${PRICES.category.toLocaleString()} mxn</span>
-                  </div>
-                </label>
-              </div>
-            );
-          })}
+        {CATEGORIES.map((category) => {
+          const isSelected = selectedCategories.has(category.id);
+          return (
+            <div
+              key={category.id}
+              className="p-4 sm:p-5 rounded-xl bg-ink-800/50 border border-flame-500/20 hover:border-flame-500/40 transition-colors"
+            >
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => handleCategoryToggle(category.id)}
+                  className="mt-1 w-5 h-5 sm:w-6 sm:h-6 rounded border-2 border-flame-500/50 bg-flame-500/10 text-flame-500 focus:ring-2 focus:ring-flame-500/50 cursor-pointer transition-all checked:bg-flame-500 checked:border-flame-500"
+                />
+                <div className="flex-1 flex items-center justify-between">
+                  <span className={`text-base sm:text-lg ${isSelected ? "text-flame-100 font-medium" : "text-foreground/80"}`}>
+                    {category.name}
+                  </span>
+                  <span className="text-base sm:text-lg font-semibold text-flame-300">${category.price.toLocaleString()} mxn</span>
+                </div>
+              </label>
+            </div>
+          );
+        })}
         </div>
       </div>
 
@@ -90,7 +96,7 @@ export function Calculator() {
             <span className="font-semibold text-flame-100">${PRICES.dancerPass.toLocaleString()} mxn</span>
           </div>
           <div className="flex items-center justify-between text-base sm:text-lg">
-            <span className="text-foreground/80">Inscripciones adicionales ({selectedCategories.size})</span>
+            <span className="text-foreground/80">Inscripciones adicionales ({selectedCategories.size} categoría{selectedCategories.size !== 1 ? "s" : ""})</span>
             <span className="font-semibold text-flame-100">${categoriesCost.toLocaleString()} mxn</span>
           </div>
           <div className="border-t border-flame-500/30 pt-3 mt-3">
