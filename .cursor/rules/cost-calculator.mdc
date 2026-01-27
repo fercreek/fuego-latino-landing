@@ -81,7 +81,7 @@ Optional: `type` (e.g. `"solista" | "pareja" | "grupo"`) and **per-person** logi
 
 ## 5. WhatsApp message template
 
-Configurable: `whatsappNumber` (e.g. `5218117655606`), `eventName`, and optional footer.
+Configurable: `whatsappNumber` (e.g. `5218117655605`), `eventName`, and optional footer.
 
 Suggested structure:
 

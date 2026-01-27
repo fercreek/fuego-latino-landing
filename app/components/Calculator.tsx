@@ -111,7 +111,7 @@ export function Calculator() {
       return;
     }
     const mensaje = generarMensajeWhatsApp();
-    const whatsappNumber = "5218117655606";
+    const whatsappNumber = "5218117655605";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
     window.open(whatsappLink, "_blank");
   };
