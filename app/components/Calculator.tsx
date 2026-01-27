@@ -11,7 +11,7 @@ const PRICES = {
 
 const CATEGORIES = [
   { id: "bachata-men-shines", name: "Bachata Men Shines", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica por nivel: open y/o alumno" },
-  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas", type: "grupo", price: PRICES.grupo, allowMultiple: false },
+  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas", type: "grupo", price: PRICES.grupo, allowMultiple: true, note: "Puede ser también bachata parejas o mixto" },
   { id: "bachata-ladies", name: "Bachata Ladies", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica si entras en varias categorías" },
   { id: "bachata-parejas", name: "Bachata Parejas", type: "pareja", price: PRICES.pareja / 2, allowMultiple: true, note: "Aplica si tienes varias coreografías o si es dúo" },
   { id: "bachata-solistas", name: "Bachata Solistas", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica por nivel: alumno, amateur, open" },
