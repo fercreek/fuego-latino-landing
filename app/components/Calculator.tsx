@@ -10,42 +10,81 @@ const PRICES = {
 };
 
 const CATEGORIES = [
-  { id: "bachata-men-shines", name: "Bachata Men Shines", type: "solista", price: PRICES.solista },
-  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas", type: "grupo", price: PRICES.grupo },
-  { id: "bachata-ladies", name: "Bachata Ladies", type: "solista", price: PRICES.solista },
-  { id: "bachata-parejas", name: "Bachata Parejas", type: "pareja", price: PRICES.pareja / 2 },
-  { id: "bachata-solistas", name: "Bachata Solistas", type: "solista", price: PRICES.solista },
+  { id: "bachata-men-shines", name: "Bachata Men Shines", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica por nivel: open y/o alumno" },
+  { id: "bachata-grupo-parejas", name: "Bachata Grupo Parejas", type: "grupo", price: PRICES.grupo, allowMultiple: false },
+  { id: "bachata-ladies", name: "Bachata Ladies", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica si entras en varias categorías" },
+  { id: "bachata-parejas", name: "Bachata Parejas", type: "pareja", price: PRICES.pareja / 2, allowMultiple: true, note: "Aplica si tienes varias coreografías o si es dúo" },
+  { id: "bachata-solistas", name: "Bachata Solistas", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica por nivel: alumno, amateur, open" },
+  { id: "salsa-solista", name: "Salsa Solista", type: "solista", price: PRICES.solista, allowMultiple: true, note: "Aplica por nivel (puede haber varios niveles)" },
 ];
 
 export function Calculator() {
-  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
+  const [categoryQuantities, setCategoryQuantities] = useState<Map<string, number>>(new Map());
   const [dancerPassPagado, setDancerPassPagado] = useState(false);
   const [nombreCompleto, setNombreCompleto] = useState("");
 
   const handleCategoryToggle = (categoryId: string) => {
-    setSelectedCategories((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(categoryId)) {
-        newSet.delete(categoryId);
+    const category = CATEGORIES.find((cat) => cat.id === categoryId);
+    if (!category) return;
+
+    if (category.allowMultiple) {
+      // Para categorías con múltiples, toggle entre 0 y 1 inicialmente
+      setCategoryQuantities((prev) => {
+        const newMap = new Map(prev);
+        const current = newMap.get(categoryId) || 0;
+        newMap.set(categoryId, current === 0 ? 1 : 0);
+        if (newMap.get(categoryId) === 0) {
+          newMap.delete(categoryId);
+        }
+        return newMap;
+      });
+    } else {
+      // Para categorías simples, toggle boolean
+      setCategoryQuantities((prev) => {
+        const newMap = new Map(prev);
+        if (newMap.has(categoryId)) {
+          newMap.delete(categoryId);
+        } else {
+          newMap.set(categoryId, 1);
+        }
+        return newMap;
+      });
+    }
+  };
+
+  const handleQuantityChange = (categoryId: string, delta: number) => {
+    setCategoryQuantities((prev) => {
+      const newMap = new Map(prev);
+      const current = newMap.get(categoryId) || 0;
+      const newValue = Math.max(0, current + delta);
+      if (newValue === 0) {
+        newMap.delete(categoryId);
       } else {
-        newSet.add(categoryId);
+        newMap.set(categoryId, newValue);
       }
-      return newSet;
+      return newMap;
     });
   };
 
-  const categoriesCost = Array.from(selectedCategories).reduce((total, categoryId) => {
+  const categoriesCost = Array.from(categoryQuantities.entries()).reduce((total, [categoryId, quantity]) => {
     const category = CATEGORIES.find((cat) => cat.id === categoryId);
-    return total + (category?.price || 0);
+    return total + (category?.price || 0) * quantity;
   }, 0);
+
+  const totalCategoriesCount = Array.from(categoryQuantities.values()).reduce((sum, qty) => sum + qty, 0);
 
   const total = (dancerPassPagado ? 0 : PRICES.dancerPass) + categoriesCost;
 
   const generarMensajeWhatsApp = () => {
-    const categoriasSeleccionadas = Array.from(selectedCategories)
-      .map((categoryId) => {
+    const categoriasSeleccionadas = Array.from(categoryQuantities.entries())
+      .map(([categoryId, quantity]) => {
         const category = CATEGORIES.find((cat) => cat.id === categoryId);
-        return category ? `• ${category.name}: $${category.price.toLocaleString()} mxn` : null;
+        if (!category) return null;
+        const subtotal = category.price * quantity;
+        if (quantity > 1) {
+          return `• ${category.name} (x${quantity}): $${category.price.toLocaleString()} mxn c/u = $${subtotal.toLocaleString()} mxn`;
+        }
+        return `• ${category.name}: $${category.price.toLocaleString()} mxn`;
       })
       .filter(Boolean)
       .join("\n");
@@ -116,7 +155,65 @@ export function Calculator() {
         <div className="space-y-3">
           <h4 className="text-base sm:text-lg font-semibold text-flame-200 mb-3">Categorías adicionales</h4>
         {CATEGORIES.map((category) => {
-          const isSelected = selectedCategories.has(category.id);
+          const quantity = categoryQuantities.get(category.id) || 0;
+          const isSelected = quantity > 0;
+
+          if (category.allowMultiple) {
+            return (
+              <div
+                key={category.id}
+                className="p-4 sm:p-5 rounded-xl bg-ink-800/50 border border-flame-500/20 hover:border-flame-500/40 transition-colors"
+              >
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => handleCategoryToggle(category.id)}
+                    className="mt-1 w-5 h-5 sm:w-6 sm:h-6 rounded border-2 border-flame-500/50 bg-flame-500/10 text-flame-500 focus:ring-2 focus:ring-flame-500/50 cursor-pointer transition-all checked:bg-flame-500 checked:border-flame-500 flex-shrink-0"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`text-base sm:text-lg ${isSelected ? "text-flame-100 font-medium" : "text-foreground/80"}`}>
+                        {category.name}
+                      </span>
+                      <span className="text-base sm:text-lg font-semibold text-flame-300">
+                        ${category.price.toLocaleString()} mxn
+                      </span>
+                    </div>
+                    {category.note && (
+                      <p className="text-xs sm:text-sm text-foreground/50 mb-2">{category.note}</p>
+                    )}
+                    {isSelected && (
+                      <div className="flex items-center gap-3 mt-3">
+                        <button
+                          type="button"
+                          onClick={() => handleQuantityChange(category.id, -1)}
+                          disabled={quantity <= 1}
+                          className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-flame-500/20 hover:bg-flame-500/30 disabled:bg-gray-600/20 disabled:cursor-not-allowed text-flame-200 font-bold text-lg flex items-center justify-center transition-colors"
+                        >
+                          −
+                        </button>
+                        <span className="text-base sm:text-lg font-semibold text-flame-100 min-w-[2rem] text-center">
+                          {quantity}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleQuantityChange(category.id, 1)}
+                          className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-flame-500/20 hover:bg-flame-500/30 text-flame-200 font-bold text-lg flex items-center justify-center transition-colors"
+                        >
+                          +
+                        </button>
+                        <span className="text-sm sm:text-base text-foreground/60 ml-auto">
+                          = ${(category.price * quantity).toLocaleString()} mxn
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div
               key={category.id}
@@ -153,7 +250,7 @@ export function Calculator() {
             </span>
           </div>
           <div className="flex items-center justify-between text-base sm:text-lg">
-            <span className="text-foreground/80">Inscripciones adicionales ({selectedCategories.size} categoría{selectedCategories.size !== 1 ? "s" : ""})</span>
+            <span className="text-foreground/80">Inscripciones adicionales ({totalCategoriesCount} inscripción{totalCategoriesCount !== 1 ? "es" : ""})</span>
             <span className="font-semibold text-flame-100">${categoriesCost.toLocaleString()} mxn</span>
           </div>
           <div className="border-t border-flame-500/30 pt-3 mt-3">
