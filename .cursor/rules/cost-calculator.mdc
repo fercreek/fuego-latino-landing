@@ -1,0 +1,136 @@
+---
+description: Rule for generating a reusable Cost Calculator component (base + optional toggle + add-ons, WhatsApp submit).
+globs: "**/Calculator*.tsx" "**/calculator*.tsx" "**/CostCalculator*.tsx"
+alwaysApply: false
+---
+
+# Cost Calculator – Abstract Pattern
+
+Use this rule to generate or replicate a **configurable cost calculator** in React/Next.js projects. The calculator supports: a mandatory **base item** (e.g. “Dancer Pass”) with an optional “already paid” toggle, **selectable add-on items** (e.g. categories), a **live total**, and an optional **WhatsApp submit** button that sends a structured message (e.g. name + breakdown + total) for reconciliation.
+
+---
+
+## 1. Data model (configurable)
+
+Define constants **outside** the component. These are the **single source of truth** for replication.
+
+```ts
+// Prices – adjust keys/values per project
+const PRICES = {
+  baseItem: 2199,      // e.g. Dancer Pass
+  addOnA: 400,
+  addOnB: 900,
+  addOnC: 400,
+};
+
+// Add-ons – each has id, name, price. Use type only if you need different rules (e.g. divide by 2 for "per person").
+const ADD_ONS = [
+  { id: "addon-1", name: "Add-on 1", price: PRICES.addOnA },
+  { id: "addon-2", name: "Add-on 2", price: PRICES.addOnB },
+  // ...
+];
+```
+
+Optional: `type` (e.g. `"solista" | "pareja" | "grupo"`) and **per-person** logic (e.g. `price: PRICES.pareja / 2`) when the fee is shared.
+
+---
+
+## 2. Component state
+
+- `selectedAddOns: Set<string>` — IDs of selected add-ons.
+- `baseItemPaid: boolean` — whether the base item is already paid (excluded from total when `true`).
+- `customerName: string` — for WhatsApp message; required if WhatsApp submit is used.
+
+---
+
+## 3. Calculation logic
+
+- **Base cost:** `baseItemPaid ? 0 : PRICES.baseItem`
+- **Add-ons cost:** `sum(ADD_ONS where id in selectedAddOns)`
+- **Total:** `baseCost + addOnsCost`
+
+---
+
+## 4. UI structure (order)
+
+1. **Customer name input** (optional but recommended if using WhatsApp)
+   - Label, e.g. “Nombre completo”
+   - Placeholder, hint (e.g. “Para corroborar con los depósitos”)
+   - Plain `<input type="text">` with controlled `value` / `onChange`
+
+2. **Base item card**
+   - Checkbox: “¿Ya lo pagaste?” (or similar) bound to `baseItemPaid`
+   - Label: base item name (e.g. “Dancer Pass”)
+   - Display price: `PRICES.baseItem` (always shown; total logic handles exclusion)
+
+3. **Add-ons list**
+   - Section heading (e.g. “Categorías adicionales”)
+   - For each `ADD_ONS` entry: checkbox + name + price
+   - Toggle selection via `selectedAddOns`
+
+4. **Breakdown + total**
+   - Line 1: Base item — “Base (Nombre)” or “Base (Nombre) (ya pagado, no se suma)” with amount or “—”
+   - Line 2: Add-ons — count + total for selected add-ons
+   - Line 3: **Total** (emphasized)
+
+5. **WhatsApp submit button** (optional)
+   - Disabled if `customerName` is empty (when name is required)
+   - On click: build message (see below), then `window.open(wa.me/...?text=encodeURIComponent(msg), "_blank")`
+
+---
+
+## 5. WhatsApp message template
+
+Configurable: `whatsappNumber` (e.g. `5218117655606`), `eventName`, and optional footer.
+
+Suggested structure:
+
+```
+Hola, mi nombre completo es: {customerName}
+
+📋 DESGLOSE DE PAGO - {eventName}
+
+Base (e.g. Dancer Pass): {baseItemPaid ? "✅ Ya pagado (no se suma)" : "$X mxn"}
+
+Categorías adicionales:
+• Name 1: $X mxn
+• Name 2: $X mxn
+(Or "Ninguna seleccionada")
+
+💰 TOTAL A PAGAR: $X mxn
+
+{footer e.g. "Realizaré el depósito a la cuenta que indique la directora."}
+```
+
+Build this string in a `buildWhatsAppMessage()` (or similar) helper; use `encodeURIComponent` only when building the `wa.me` URL.
+
+---
+
+## 6. Replication checklist
+
+When **replicating** in another project:
+
+- [ ] Add `PRICES` and `ADD_ONS` (or equivalent) with project-specific values.
+- [ ] Keep state: `selectedAddOns`, `baseItemPaid`, `customerName`.
+- [ ] Keep calculation: `total = (baseItemPaid ? 0 : basePrice) + sum(selected add-ons)`.
+- [ ] Keep UI order: name → base item checkbox → add-ons → breakdown → total → optional WhatsApp button.
+- [ ] Replace `whatsappNumber`, `eventName`, labels, and footer with project-specific copy.
+- [ ] Adjust styling (Tailwind classes) to match the target design system; structure can stay the same.
+
+---
+
+## 7. File location and export
+
+- Prefer a single component file, e.g. `components/Calculator.tsx` or `components/CostCalculator.tsx`.
+- Export the main component (e.g. `export function Calculator() { ... }`).
+- Use `"use client"` in Next.js if the component uses `useState` or browser APIs.
+
+---
+
+## 8. Optional enhancements
+
+- **localStorage:** Persist `selectedAddOns` / `baseItemPaid` so the user doesn’t lose state on refresh.
+- **Validation:** Ensure at least one add-on is selected before enabling submit, if required by business rules.
+- **Accessibility:** Use `<label>` for checkboxes, `aria-describedby` for hints, and focus styles on interactive elements.
+
+This rule abstracts **how** the calculator was generated: configurable data model, fixed state and calculation logic, consistent UI order, and optional WhatsApp message generation. Use it as a Cursor rule to regenerate or adapt the calculator in new projects.

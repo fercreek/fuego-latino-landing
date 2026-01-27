@@ -395,3 +395,7 @@ export default function CompetitionPage() {
   );
 }
 ```
+
+## Related rules
+
+- **Cost Calculator:** The `Calculator` used in the "Calculadora de Costos" accordion is defined and replicated via `.cursor/rules/cost-calculator.mdc`. Use that rule to generate or adapt the calculator in this or other projects.
