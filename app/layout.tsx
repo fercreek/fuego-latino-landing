@@ -133,7 +133,7 @@ export default function RootLayout({
       addressLocality: "Monterrey",
       addressRegion: "Nuevo León",
       addressCountry: "MX",
-      streetAddress: "Monterrey, Nuevo León",
+      streetAddress: "Av. Chapultepec 724, Calle 7ma Zona, Col. Caracol",
     },
     telephone: "+52 1 81 1040 4188",
     priceRange: "$$",
@@ -147,14 +147,14 @@ export default function RootLayout({
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Tuesday"],
-        opens: "20:00",
-        closes: "21:00",
+        opens: "19:00",
+        closes: "22:00",
       },
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Thursday"],
-        opens: "20:00",
-        closes: "22:00",
+        dayOfWeek: ["Saturday"],
+        opens: "11:00",
+        closes: "13:30",
       },
     ],
     sameAs: [
