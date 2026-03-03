@@ -50,11 +50,11 @@ const galleryCategories = {
 };
 
 type Props = {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = params.category;
+  const { category } = await params;
   const galleryData = category in galleryCategories 
     ? galleryCategories[category as keyof typeof galleryCategories]
     : null;
@@ -107,8 +107,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function GalleryPage({ params }: Props) {
-  const category = params.category;
+export default async function GalleryPage({ params }: Props) {
+  const { category } = await params;
   const galleryData = category in galleryCategories 
     ? galleryCategories[category as keyof typeof galleryCategories]
     : null;

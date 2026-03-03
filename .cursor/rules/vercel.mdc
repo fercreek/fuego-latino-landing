@@ -1,0 +1,28 @@
+---
+description: Estructura para conectar el proyecto con Vercel (deploy y variables)
+alwaysApply: true
+---
+
+# Vercel – Estructura estándar
+
+Si el proyecto se despliega o se conecta a **Vercel**, seguir esta estructura. No es obligatorio tener Vercel; tener la estructura deja listo el proyecto cuando se conecte.
+
+## Variables de entorno
+
+- Documentar en la raíz del proyecto todas las variables que usa la app en **`.env.example`** (nombres y placeholders, sin valores reales).
+- En Vercel: Project → Settings → Environment Variables. Usar los mismos nombres que en `.env.example`.
+- Cliente: Next.js `NEXT_PUBLIC_*`, Vite `VITE_*`. El resto solo en servidor.
+
+## vercel.json (opcional)
+
+- Para **Next.js o Vite** en la raíz suele no hacer falta; Vercel detecta el framework.
+- Añadir `vercel.json` cuando:
+  - Sea **monorepo**: `builds` con `src` al `package.json` del app (ej. `web/package.json`) y `routes` si aplica.
+  - Hagan falta **rewrites**, **headers** o **redirects**.
+- No commitear secretos; las variables se configuran en el dashboard de Vercel.
+
+## Resumen
+
+- `.env.example` con la lista de variables necesarias.
+- Variables reales solo en Vercel (o en `.env`/`.env.local` en local, gitignored).
+- `vercel.json` solo si el proyecto lo requiere (monorepo, rewrites, etc.).

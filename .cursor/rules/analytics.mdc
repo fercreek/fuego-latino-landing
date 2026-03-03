@@ -1,0 +1,29 @@
+---
+description: Estándar de analytics – Vercel Analytics + Speed Insights y capa de abstracción
+alwaysApply: true
+---
+
+# Analytics – Estándar del proyecto
+
+El proyecto debe usar **Vercel Analytics** y **Vercel Speed Insights** como base. Toda implementación de analytics debe seguir esta convención.
+
+## Stack
+
+- **Page views y eventos:** `@vercel/analytics`
+- **Performance (Web Vitals):** `@vercel/speed-insights`
+- **Capa de abstracción:** archivo único `lib/analytics.ts` o `src/lib/analytics.ts` (según estructura del proyecto) que exporta `trackEvent`, `trackPageView` y un objeto `analytics` con eventos predefinidos.
+
+## Convenciones
+
+- **Nombres de eventos:** `snake_case` (ej. `cta_clicked`, `form_submitted`, `hero_cta_clicked`).
+- **Modo desarrollo:** en local no enviar datos reales; opcionalmente loguear en consola con prefijo `[Analytics]` para depuración.
+- **Control por env:** usar `NEXT_PUBLIC_ANALYTICS_ENABLED` o `VITE_ANALYTICS_ENABLED` (según framework) para activar/desactivar envío.
+
+## Eventos estándar (landings)
+
+- `app_loaded` / `page_view`
+- `cta_clicked` (con parámetros: `label`, `location`)
+- `form_start`, `form_submit`, `form_error`
+- `social_link_click` (parámetro: `platform`)
+
+Al añadir pantallas o flujos nuevos, usar la capa de abstracción; no llamar directamente a APIs de analytics en componentes.

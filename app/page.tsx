@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useEffect, useMemo, useState } from "react";
 import { Competitions } from "./sections/competitions";
 import { Header } from "./components/Header";
@@ -62,7 +61,9 @@ const schedule = [
     day: "Martes",
     emoji: "🔥",
     slots: [
+      { time: "7:00 PM", classes: ["Jazz Lírico"] },
       { time: "8:00 PM", classes: ["Urbano"] },
+      { time: "9:00 PM", classes: ["Entrenamiento de Bachata (Men's y Ladies)"] },
     ],
   },
   {
@@ -74,10 +75,11 @@ const schedule = [
     ],
   },
   {
-    day: "Jueves",
-    emoji: "💫",
+    day: "Sábado",
+    emoji: "🤸‍♀️",
     slots: [
-      { time: "8:00 PM", classes: ["Jazz & Contempo Adultos"] },
+      { time: "11:00 AM", classes: ["Danza Aérea (Kids)"] },
+      { time: "12:30 PM", classes: ["Danza Aérea (Adultos)"] },
     ],
   },
 ];
@@ -193,27 +195,25 @@ export default function Home() {
   };
 
   return (
-    <ParallaxProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-        <Header />
-        <main className="mx-auto flex max-w-7xl flex-col gap-32 px-4 pb-32 pt-12 sm:px-8 lg:px-12">
-          <Hero />
-          <Highlights />
-          <SocialMedia />
-          <Styles />
-          <Schedule />
-          <PhotoGrid />
-          <GalleryCategories />
-          <Competitions />
-          {/* <Testimonials current={currentTestimonial} setIndex={setTestimonialIndex} /> */}
-          <ParallaxShowcase />
-          <FinalCta onSubmit={handleFormSubmit} formState={formState} />
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <WhatsAppFloat />
-      </div>
-    </ParallaxProvider>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Header />
+      <main className="mx-auto flex max-w-7xl flex-col gap-32 px-4 pb-32 pt-12 sm:px-8 lg:px-12">
+        <Hero />
+        <Highlights />
+        <SocialMedia />
+        <Styles />
+        <Schedule />
+        <PhotoGrid />
+        <GalleryCategories />
+        <Competitions />
+        {/* <Testimonials current={currentTestimonial} setIndex={setTestimonialIndex} /> */}
+        <ParallaxShowcase />
+        <FinalCta onSubmit={handleFormSubmit} formState={formState} />
+      </main>
+      <Footer />
+      <ScrollToTop />
+      <WhatsAppFloat />
+    </div>
   );
 }
 
@@ -274,7 +274,7 @@ function Hero() {
 
             <motion.p
               variants={fadeUp}
-              className="text-xl leading-relaxed text-foreground/80 max-w-lg font-medium"
+              className="text-xl leading-relaxed text-foreground/80 max-w-lg font-medium text-balance"
             >
               Salsa, bachata, urbano, jazz y contemporáneo en un espacio seguro y cálido.
               Comunidad que acompaña tu proceso, cero juicios y mucho ritmo.
@@ -284,10 +284,10 @@ function Hero() {
               <Link
                 href={whatsappLink}
                 target="_blank"
-                className="group relative overflow-hidden inline-flex items-center justify-center rounded-full bg-gradient-to-r from-flame-500 to-flame-600 px-8 py-4 text-base font-bold text-ink-950 shadow-xl shadow-flame-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-flame-500/50 hover:-translate-y-1.5 hover:scale-105"
+                className="group relative overflow-hidden inline-flex items-center justify-center rounded-full bg-linear-to-r from-flame-500 to-flame-600 px-8 py-4 text-base font-bold text-ink-950 shadow-xl shadow-flame-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-flame-500/60 hover:-translate-y-1.5 hover:scale-105"
               >
                 <span className="relative z-10">Agenda clase por WhatsApp</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-flame-400 to-flame-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-r from-flame-400 to-flame-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
               <Link
                 href="#horarios"
@@ -830,7 +830,16 @@ function ParallaxShowcase() {
 
       <div className="grid gap-5 lg:grid-cols-3">
         {gallery.map((item, idx) => (
-          <Parallax speed={item.speed} key={item.src}>
+          <div
+            key={item.src}
+            className="animate-css-parallax"
+            style={
+              {
+                "--parallax-start": `${Math.abs(item.speed) * 10}px`,
+                "--parallax-end": `${item.speed * 10}px`,
+              } as React.CSSProperties
+            }
+          >
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -852,7 +861,7 @@ function ParallaxShowcase() {
                 <p className="text-lg font-bold text-flame-100 drop-shadow-lg">{item.alt}</p>
               </div>
             </motion.div>
-          </Parallax>
+          </div>
         ))}
       </div>
     </section>
@@ -910,16 +919,16 @@ function FinalCta({
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={onSubmit}
-            className="rounded-2xl border border-flame-500/30 bg-ink-900/90 backdrop-blur-xl p-8 shadow-2xl shadow-flame-500/10"
+            className="rounded-3xl border border-flame-500/20 bg-ink-900/95 backdrop-blur-2xl p-8 sm:p-10 shadow-2xl shadow-flame-500/10 transition-all hover:border-flame-500/40 hover:shadow-flame-500/20"
           >
-            <div className="grid gap-5">
+            <div className="grid gap-6">
               <label className="block">
                 <span className="text-sm font-semibold text-foreground/80 mb-2 block">Nombre</span>
                 <input
                   name="name"
                   required
                   placeholder="Tu nombre"
-                  className="w-full rounded-xl border border-flame-500/25 bg-ink-800/90 px-4 py-3.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/30 transition-all duration-300 hover:border-flame-500/40"
+                  className="w-full rounded-xl border border-flame-500/20 bg-ink-800/80 px-4 py-3.5 text-base text-foreground placeholder:text-foreground/30 focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/40 transition-all duration-300 hover:border-flame-500/40"
                 />
               </label>
               <label className="block">
@@ -928,14 +937,14 @@ function FinalCta({
                   name="email"
                   type="email"
                   placeholder="tucorreo@email.com"
-                  className="w-full rounded-xl border border-flame-500/25 bg-ink-800/90 px-4 py-3.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/30 transition-all duration-300 hover:border-flame-500/40"
+                  className="w-full rounded-xl border border-flame-500/20 bg-ink-800/80 px-4 py-3.5 text-base text-foreground placeholder:text-foreground/30 focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/40 transition-all duration-300 hover:border-flame-500/40"
                 />
               </label>
               <label className="block">
                 <span className="text-sm font-semibold text-foreground/80 mb-2 block">¿Qué te interesa?</span>
                 <select
                   name="interest"
-                  className="w-full rounded-xl border border-flame-500/25 bg-ink-800/90 px-4 py-3.5 text-sm text-foreground focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/30 transition-all duration-300 hover:border-flame-500/40"
+                  className="w-full rounded-xl border border-flame-500/20 bg-ink-800/80 px-4 py-3.5 text-base text-foreground focus:border-flame-500 focus:outline-none focus:ring-2 focus:ring-flame-500/40 transition-all duration-300 hover:border-flame-500/40 cursor-pointer appearance-none"
                 >
                   <option>Salsa</option>
                   <option>Bachata Sensual</option>

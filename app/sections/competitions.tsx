@@ -70,13 +70,16 @@ const starCupResults = {
 };
 
 const mamboleeResults = {
-  oro: ["1.er lugar: Bachata pareja amateur-alumno"],
-  plata: ["2.º lugar: Bachata men's shines"],
+  oro: ["Bachata Dúo Shines Mixto"],
+  plata: [
+    "Bachata Mens Shines",
+    "Bachata Team Shines Mixto Open",
+    "Bachata Pareja Am-Al",
+  ],
   bronce: [
-    "3.er lugar: Bachata pareja over 65 pro-am",
-    "3.er lugar: Salsa solista masculino junior",
-    "3.er lugar: Salsa solista masculino alumno",
-    "3.er lugar: Bachata grupo shines femenil alumnos",
+    "Bachata Dúo Shines Femenil Open",
+    "Bachata Solista Femenil Junior",
+    "Bachata Solista Femenil Alumno",
   ],
   especial: [],
 };
@@ -108,22 +111,39 @@ const medalEmoji: Record<string, string> = {
 
 function MedalColumn({ title, items, tone }: { title: string; items: string[]; tone: string }) {
   const icon = medalEmoji[title] ?? "🏅";
+  
+  if (items.length === 0) return null;
+
   return (
     <motion.div
       variants={fadeUp}
-      className={`rounded-2xl border border-flame-500/20 bg-gradient-to-br ${tone} p-4 shadow-lg shadow-flame-500/10`}
+      className={`rounded-2xl border border-flame-500/20 bg-gradient-to-br ${tone} shadow-lg shadow-flame-500/10 overflow-hidden h-fit`}
     >
-      <h3 className="text-lg font-bold text-flame-100 mb-3 flex items-center gap-2">
-        <span>{icon}</span>
-        <span>{title}</span>
-      </h3>
-      <ul className="space-y-2 text-sm text-foreground/70">
-        {items.map((item) => (
-          <li key={item} className="rounded-xl bg-ink-900/60 px-3 py-2 ring-1 ring-white/5">
-            {item}
-          </li>
-        ))}
-      </ul>
+      <details className="group">
+        <summary className="cursor-pointer p-4 outline-none list-none flex items-center justify-between [&::-webkit-details-marker]:hidden">
+          <h3 className="text-base sm:text-lg font-bold text-flame-100 flex items-center gap-2">
+            <span>{icon}</span>
+            <span>{title} <span className="text-sm font-normal text-foreground/50 ml-1">({items.length})</span></span>
+          </h3>
+          <svg
+            className="w-4 h-4 sm:w-5 sm:h-5 text-flame-400 transition-transform duration-300 group-open:-rotate-180 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div className="px-4 pb-4">
+          <ul className="space-y-2 text-xs sm:text-sm text-foreground/70">
+            {items.map((item) => (
+              <li key={item} className="rounded-xl bg-ink-900/60 px-3 py-2 ring-1 ring-white/5">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
     </motion.div>
   );
 }
@@ -211,7 +231,7 @@ function StarCup() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="grid gap-4 lg:grid-cols-3"
+        className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3"
       >
         <MedalColumn title="Oro" items={starCupResults.oro} tone="from-flame-500/20 to-amber-500/15" />
         <MedalColumn title="Plata" items={starCupResults.plata} tone="from-foreground/10 to-ink-800/90" />
@@ -233,13 +253,22 @@ function Mambolee() {
         className="text-center max-w-3xl mx-auto space-y-4"
       >
         <p className="text-sm font-bold uppercase tracking-[0.25em] text-flame-400">Competencias</p>
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Mambolee One 2025</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">🏆 Nuestros resultados en esta competencia</h2>
         <p className="text-lg text-foreground/65">
           Felicitaciones al equipo por el esfuerzo y la pasión reflejada en cada podio.
         </p>
         <p className="text-sm text-foreground/60">
           Agradecimiento a alumnos, maestros, amigos y familia por el apoyo. Reconocimiento especial a Aly Trejo por impulsar nuevos
           talentos. Gracias Mambolee One; nos vemos en el 10.º aniversario.
+        </p>
+        <p className="text-base font-semibold text-flame-200 mt-6">
+          ¡Vamos por más! 🔥
+        </p>
+        <p className="text-sm text-foreground/70">
+          Esto apenas comienza 💃🕺
+        </p>
+        <p className="text-sm font-semibold text-flame-100">
+          Nosotros somos Fuego Latino. 🔥
         </p>
       </motion.div>
       <ResultsGrid results={mamboleeResults} />
@@ -254,7 +283,7 @@ function ResultsGrid({ results }: { results: MedalResults }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="grid gap-4 lg:grid-cols-4"
+      className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
     >
       <MedalColumn title="Oro" items={results.oro} tone="from-flame-500/20 to-amber-500/15" />
       <MedalColumn title="Plata" items={results.plata} tone="from-foreground/10 to-ink-800/90" />
