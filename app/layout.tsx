@@ -15,22 +15,32 @@ export const metadata: Metadata = {
     template: "%s | Fuego Latino Dance Studio",
   },
   description:
-    "Fuego Latino Dance Studio: Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey, Nuevo León. Espacio seguro, instructores profesionales y comunidad cálida. Clase muestra gratis. Tu estudio de baile latino moderno en MTY.",
+    "Academia de salsa y bachata en Monterrey (MTY). Clases de salsa, bachata, urbano, jazz, contemporáneo y danza aérea. Espacio seguro, instructores profesionales y comunidad cálida. Clase muestra gratis. Fuego Latino Dance Studio – Av. Chapultepec 724, Col. Caracol.",
   keywords: [
     "clases de baile monterrey",
     "salsa monterrey",
     "bachata monterrey",
+    "salsa y bachata mty",
+    "clases de salsa mty",
+    "clases de bachata mty",
+    "academia de baile monterrey",
+    "escuela de baile monterrey",
     "baile latino monterrey",
+    "clases de baile cerca de mí",
     "dance studio monterrey",
-    "clases de salsa",
-    "clases de bachata",
+    "clases de salsa monterrey",
+    "clases de bachata monterrey",
     "baile urbano monterrey",
     "jazz contemporáneo monterrey",
+    "danza aérea monterrey",
+    "clases de danza aérea mty",
     "fuego latino",
+    "fuego latino dance studio",
     "estudio de baile monterrey",
-    "clases de baile para adultos",
+    "clases de baile para adultos monterrey",
     "sociales de baile monterrey",
-    "competencia de baile",
+    "competencia de baile monterrey",
+    "clase muestra gratis baile monterrey",
   ],
   authors: [{ name: "Fuego Latino Dance Studio" }],
   creator: "Fuego Latino Dance Studio",
@@ -100,10 +110,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Agregar cuando tengas los códigos de verificación
-    // google: "tu-codigo-google",
-    // yandex: "tu-codigo-yandex",
-    // bing: "tu-codigo-bing",
+    google: "IgoSOySDI3CbKThsvpwaenl8S64AZDlCwmIOQysvPh8",
   },
   other: {
     "msvalidate.01": "", // Agregar código de Bing cuando esté disponible
@@ -220,6 +227,18 @@ export default function RootLayout({
             "@type": "Service",
             name: "Clases de Jazz & Contemporáneo",
             description: "Líneas largas, técnica y flow escénico para adultos.",
+            provider: {
+              "@type": "Organization",
+              name: "Fuego Latino Dance Studio",
+            },
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Clases de Danza Aérea",
+            description: "Danza aérea para kids y adultos los sábados. Fortalece tu cuerpo y descubre todo lo que eres capaz de lograr.",
             provider: {
               "@type": "Organization",
               name: "Fuego Latino Dance Studio",
