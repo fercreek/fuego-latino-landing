@@ -2,7 +2,11 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://fuegolatino.dance'
-  const now = new Date()
+
+  // Use fixed dates that reflect actual content updates.
+  // Update these manually when content changes significantly.
+  const homepageLastModified = new Date('2026-04-06')
+  const galleryLastModified = new Date('2025-03-01')
 
   const galleryCategories = [
     'brisa-cup',
@@ -13,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const galleryPages = galleryCategories.map((category) => ({
     url: `${baseUrl}/gallery/${category}`,
-    lastModified: now,
+    lastModified: galleryLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
@@ -21,8 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: now,
-      changeFrequency: 'weekly',
+      lastModified: homepageLastModified,
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     ...galleryPages,

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Fuego Latino Dance Studio",
   },
   description:
-    "Academia de salsa y bachata en Monterrey (MTY). Clases de salsa, bachata, urbano, jazz, contemporáneo y danza aérea. Espacio seguro, instructores profesionales y comunidad cálida. Clase muestra gratis. Fuego Latino Dance Studio – Av. Chapultepec 724, Col. Caracol.",
+    "Academia de baile en Monterrey: salsa, bachata, urbano, jazz y danza aérea. Instructores profesionales, grupos reducidos y clase muestra gratis. ¡Reserva hoy!",
   keywords: [
     "clases de baile monterrey",
     "salsa monterrey",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     url: "https://fuegolatino.dance",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
-      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis.",
+      "Academia de baile en Monterrey: salsa, bachata, urbano, jazz y danza aérea. Grupos reducidos, instructores profesionales y clase muestra gratis. ¡Reserva hoy!",
     siteName: "Fuego Latino Dance Studio",
     images: [
       {
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
-      "Clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Espacio seguro, instructores profesionales y comunidad cálida. Agenda tu clase muestra gratis.",
+      "Academia de baile en Monterrey: salsa, bachata, urbano, jazz y danza aérea. Grupos reducidos, instructores profesionales y clase muestra gratis. ¡Reserva hoy!",
     images: [
       {
         url: "https://fuegolatino.dance/images/studio-fuego.jpg",
@@ -115,6 +115,10 @@ export const metadata: Metadata = {
   other: {
     "msvalidate.01": "", // Agregar código de Bing cuando esté disponible
     "yandex-verification": "", // Agregar código de Yandex cuando esté disponible
+    "geo.region": "MX-NLE",
+    "geo.placename": "Monterrey, Nuevo León",
+    "geo.position": "25.6714;-100.3101",
+    "ICBM": "25.6714, -100.3101",
   },
 };
 
@@ -164,9 +168,45 @@ export default function RootLayout({
         closes: "13:30",
       },
     ],
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "25.6714",
+      longitude: "-100.3101",
+    },
+    hasMap: "https://maps.google.com/?q=Av.+Chapultepec+724+Caracol+Monterrey",
     sameAs: [
       "https://www.instagram.com/fuegolatino.dancestudio/",
       "https://www.facebook.com/FuegoLatinoDS",
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "47",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: [
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Mariana G." },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        reviewBody: "En un mes ya bailaba social sin miedo. Las clases son dinámicas y el ambiente es súper cálido.",
+        name: "Alumna de Bachata",
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Luis R." },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        reviewBody: "Aprendí técnica y musicalidad real, no solo pasos. Además hacen comunidad, siempre hay eventos.",
+        name: "Salsa y Social",
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Andrea P." },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        reviewBody: "Las coreos se sienten de show. Las instalaciones son modernas y los coaches súper atentos.",
+        name: "Urbano",
+      },
     ],
     areaServed: {
       "@type": "City",

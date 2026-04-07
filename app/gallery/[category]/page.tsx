@@ -8,8 +8,8 @@ const baseUrl = "https://fuegolatino.dance";
 const galleryCategories = {
   "brisa-cup": {
     title: "Brisa Cup",
-    description: "Galería de imágenes de Brisa Cup - Competencia de baile latino en Fuego Latino Dance Studio",
-    longDescription: "Explora las mejores imágenes de Brisa Cup, nuestra competencia de baile latino en Monterrey. Momentos capturados de bailarines profesionales en acción.",
+    description: "Galería Brisa Cup — Competencia de baile latino en Fuego Latino Dance Studio, Monterrey NL",
+    longDescription: "Explora las mejores imágenes de Brisa Cup, la competencia de salsa y baile latino de Fuego Latino Dance Studio en Monterrey, Nuevo León. Momentos capturados de bailarines profesionales en acción.",
     images: [
       "/images/brisa-cup/brisa2025_1.jpeg",
       "/images/brisa-cup/brisa2025_2.jpeg",
@@ -20,8 +20,8 @@ const galleryCategories = {
   },
   "fuego-clases": {
     title: "Fuego Clases",
-    description: "Galería de imágenes de nuestras clases de baile en Fuego Latino Dance Studio",
-    longDescription: "Descubre cómo son nuestras clases de salsa, bachata, urbano y más. Estudiantes aprendiendo en un ambiente seguro y profesional en Monterrey.",
+    description: "Clases de salsa, bachata, urbano y jazz en Fuego Latino Dance Studio, Monterrey NL — fotos reales",
+    longDescription: "Descubre cómo son nuestras clases de salsa, bachata, urbano, jazz y contemporáneo en Monterrey. Estudiantes aprendiendo en un ambiente seguro, profesional y con instructores certificados.",
     images: [
       "/images/fuego-clases/clase1.jpeg",
       "/images/fuego-clases/clase2.jpeg",
@@ -29,16 +29,16 @@ const galleryCategories = {
   },
   "fuego-ladies": {
     title: "Fuego Ladies",
-    description: "Galería de imágenes de Fuego Ladies - Clases exclusivas para mujeres",
-    longDescription: "Galería de Fuego Ladies, nuestras clases exclusivas diseñadas para empoderar a través del baile. Momentos de fuerza, elegancia y comunidad.",
+    description: "Fuego Ladies — Clases de baile exclusivas para mujeres en Fuego Latino Dance Studio, Monterrey",
+    longDescription: "Galería de Fuego Ladies en Monterrey, nuestras clases de baile latino diseñadas para empoderar a mujeres a través de la salsa y bachata. Momentos de fuerza, elegancia y comunidad.",
     images: [
       "/images/fuego-ladies/ladies1.jpeg",
     ],
   },
   "mambolee-one": {
     title: "Mambolee One",
-    description: "Galería de imágenes de Mambolee One - Evento especial de baile",
-    longDescription: "Revive los mejores momentos de Mambolee One, nuestro evento especial de baile latino. Presentaciones, shows y la energía de nuestra comunidad.",
+    description: "Mambolee One — Evento de baile latino en Fuego Latino Dance Studio, Monterrey NL",
+    longDescription: "Revive los mejores momentos de Mambolee One, evento especial de salsa y baile latino organizado por Fuego Latino Dance Studio en Monterrey. Presentaciones, shows y la energía de nuestra comunidad.",
     images: [
       "/images/mambolee-one/mambole2025_1.jpeg",
       "/images/mambolee-one/mambole2025_2.jpeg",
@@ -126,19 +126,45 @@ export default async function GalleryPage({ params }: Props) {
     );
   }
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    name: galleryData.title,
-    description: galleryData.longDescription,
-    url: `${baseUrl}/gallery/${category}`,
-    image: galleryData.images.map((img) => `${baseUrl}${img}`),
-    publisher: {
-      "@type": "Organization",
-      name: "Fuego Latino Dance Studio",
-      url: baseUrl,
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      name: galleryData.title,
+      description: galleryData.longDescription,
+      url: `${baseUrl}/gallery/${category}`,
+      image: galleryData.images.map((img) => `${baseUrl}${img}`),
+      publisher: {
+        "@type": "Organization",
+        name: "Fuego Latino Dance Studio",
+        url: baseUrl,
+      },
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Galería",
+          item: `${baseUrl}/gallery`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: galleryData.title,
+          item: `${baseUrl}/gallery/${category}`,
+        },
+      ],
+    },
+  ];
 
   return (
     <>
