@@ -391,6 +391,7 @@ a {
 
 @supports (animation-timeline: view()) {
   .animate-css-parallax {
+    will-change: transform;
     animation: css-parallax linear both;
     animation-timeline: view();
     animation-range: entry 10% cover 50%;
