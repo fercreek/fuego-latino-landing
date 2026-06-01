@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://fuegolatino.dance"),
+  metadataBase: new URL("https://www.fuegolatino.dance"),
   alternates: {
     canonical: "/",
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_MX",
     alternateLocale: ["es"],
-    url: "https://fuegolatino.dance",
+    url: "https://www.fuegolatino.dance",
     title: "Fuego Latino Dance Studio | Clases de Baile en Monterrey",
     description:
       "Academia de baile en Monterrey: salsa, bachata, urbano, jazz y danza aérea. Grupos reducidos, instructores profesionales y clase muestra gratis. ¡Reserva hoy!",
