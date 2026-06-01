@@ -237,8 +237,8 @@ function Hero() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-flame-500/10 via-transparent to-transparent" style={{ left: '4px', top: '32px' }} />
         </div>
 
-        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20 overflow-hidden" style={{ borderRadius: '199px' }}>
-          <div className="absolute inset-0 -z-10 pointer-events-none" style={{ borderRadius: '199px' }}>
+        <div className="relative grid gap-12 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:px-14 lg:py-20 overflow-hidden" style={{ borderRadius: '40px' }}>
+          <div className="absolute inset-0 -z-10 pointer-events-none" style={{ borderRadius: '40px' }}>
             <div className="absolute inset-0 bg-gradient-to-t from-transparent via-flame-500/15 to-transparent animate-pulse" />
             <div className="absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-flame-600/25 via-flame-500/15 to-transparent blur-2xl" style={{ animation: 'flicker 3s ease-in-out infinite' }} />
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-amber-500/25 via-flame-400/15 to-transparent blur-2xl" style={{ animation: 'flicker 2s ease-in-out infinite 0.5s' }} />
@@ -265,10 +265,10 @@ function Hero() {
               variants={fadeUp}
               className="text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
             >
-              <span className="text-foreground drop-shadow-lg">Baile latino</span>
+              <span className="text-foreground drop-shadow-lg">Academia de baile</span>
               <br />
               <span className="bg-gradient-to-r from-flame-400 via-flame-500 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,106,0,0.5)] burning-text">
-                moderno en MTY
+                en Monterrey
               </span>
             </motion.h1>
 
