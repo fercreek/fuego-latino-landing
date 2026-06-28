@@ -54,10 +54,10 @@ export default function SanPedroPage() {
               <Image
                 src="/syb-fuego-logo.jpg"
                 alt="Salsa y Bachata Fuego"
-                width={120}
-                height={40}
-                className="relative object-contain"
-                style={{ background: "transparent" }}
+                width={110}
+                height={36}
+                className="relative object-contain rounded-md"
+                style={{ padding: "4px 6px", background: "#fff" }}
               />
             </div>
             <p className="text-[10px] font-medium text-flame-300/70 tracking-wide hidden sm:block">
