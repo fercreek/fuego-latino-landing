@@ -50,21 +50,19 @@ export default function SanPedroPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-8">
           <Link href="https://www.fuegolatino.dance" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-flame-500/30 blur-xl group-hover:bg-flame-400/40 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-flame-500/20 blur-xl group-hover:bg-flame-400/30 transition-colors duration-300 rounded-lg" />
               <Image
-                src="/logo.png"
-                alt="Fuego Latino Dance Studio"
-                width={44}
-                height={44}
-                className="relative rounded-full ring-2 ring-flame-500/50"
+                src="/syb-fuego-logo.jpg"
+                alt="Salsa y Bachata Fuego"
+                width={120}
+                height={40}
+                className="relative object-contain"
+                style={{ background: "transparent" }}
               />
             </div>
-            <div className="leading-tight">
-              <p className="text-base font-bold text-flame-100">Fuego Latino</p>
-              <p className="text-[10px] font-medium text-flame-300/70 tracking-wide">
-                SAN PEDRO GARZA GARCÍA
-              </p>
-            </div>
+            <p className="text-[10px] font-medium text-flame-300/70 tracking-wide hidden sm:block">
+              SAN PEDRO GARZA GARCÍA
+            </p>
           </Link>
           <Link
             href={waLink}
@@ -252,7 +250,7 @@ export default function SanPedroPage() {
       <footer className="border-t border-flame-500/20 bg-ink-900/60">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="Fuego Latino" width={36} height={36} className="rounded-full" />
+            <Image src="/syb-fuego-logo.jpg" alt="Salsa y Bachata Fuego" width={100} height={34} className="object-contain" />
             <div>
               <p className="font-bold text-flame-100 text-sm">Salsa y Bachata Fuego</p>
               <p className="text-xs text-foreground/50">San Pedro Garza García, N.L.</p>
