@@ -41,18 +41,4 @@ export const locations: Record<string, Location> = {
       plazaName: "Plaza Saaghi",
     },
   },
-  "san-nicolas": {
-    name: "Salsa y Bachata Fuego",
-    slug: "san-nicolas",
-    municipality: "San Nicolás de los Garza",
-    address: "Por confirmar",
-    addressShort: "San Nicolás de los Garza",
-    phone: "81 1040 4188",
-    waNumber: "5218110404188",
-    waMessage:
-      "Hola, quiero información sobre Salsa y Bachata Fuego en San Nicolás.",
-    instagram: null,
-    mapsUrl: null,
-    comingSoon: true,
-  },
 };
