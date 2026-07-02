@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Update these manually when content changes significantly.
   const homepageLastModified = new Date('2026-04-06')
   const galleryLastModified = new Date('2025-03-01')
+  const sanPedroLastModified = new Date('2026-07-01')
 
   const galleryCategories = [
     'brisa-cup',
@@ -28,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: homepageLastModified,
       changeFrequency: 'weekly' as const,
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/salsa-y-bachata-fuego`,
+      lastModified: sanPedroLastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
     },
     ...galleryPages,
   ]
