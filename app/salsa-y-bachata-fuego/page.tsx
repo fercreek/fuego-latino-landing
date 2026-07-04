@@ -101,7 +101,7 @@ export default function SanPedroPage() {
             <div className="w-full lg:w-[480px] shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl shadow-gray-200/60 ring-1 ring-gray-100">
                 <Image
-                  src="/images/fuego-clases/clase2.jpeg"
+                  src="/images/fuego-clases/syb-hero.jpg"
                   alt="Clase de baile en Salsa y Bachata Fuego, San Pedro"
                   fill
                   priority
