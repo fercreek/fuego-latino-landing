@@ -29,16 +29,19 @@ export const sucursales = [
       newAddressShort: "Av. Real San Agustín 302, Plaza Saaghi",
     },
     mapsUrl: "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
+    styles: "Salsa, Bachata, Urbano y Jazz & Contempo",
     comingSoon: false,
   },
   {
     id: "san-jeronimo",
     name: "San Jerónimo",
-    address: null,
-    addressShort: "Fenix Dance Center",
+    address: "Blvd. Puerta del Sol 1009, Col. Colinas de San Jerónimo, Monterrey, N.L. 64630",
+    addressShort: "Blvd. Puerta del Sol 1009, San Jerónimo",
     moving: null,
-    mapsUrl: null,
-    comingSoon: true,
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Blvd.+Puerta+del+Sol+1009,+Colinas+de+San+Jer%C3%B3nimo,+Monterrey",
+    facebookUrl: "https://www.facebook.com/p/Salsa-y-Bachata-Fuego-Sucursal-San-Jer%C3%B3nimo-61590396188766/",
+    styles: "Salsa, Bachata y Cumbia",
+    comingSoon: false,
   },
 ];
 

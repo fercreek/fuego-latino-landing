@@ -34,7 +34,7 @@ export default function SanPedroPage() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="https://www.fuegolatino.dance" className="flex items-center gap-3">
-            <div className="relative w-24 h-8 shrink-0">
+            <div className="relative w-36 h-12 shrink-0">
               <Image
                 src="/syb-fuego-logo.jpg"
                 alt="Salsa y Bachata Fuego"
@@ -117,36 +117,6 @@ export default function SanPedroPage() {
         </div>
       </section>
 
-      {/* GALERÍA — comunidad → progreso → resultados, prueba visual real */}
-      <section className="px-6 pb-16 sm:pb-20">
-        <div className="mx-auto max-w-6xl grid grid-cols-3 gap-3 sm:gap-4">
-          <div className="relative aspect-square rounded-xl overflow-hidden">
-            <Image
-              src="/images/fuego-clases/clase1.jpeg"
-              alt="Comunidad de Salsa y Bachata Fuego en clase"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="relative aspect-square rounded-xl overflow-hidden">
-            <Image
-              src="/images/fuego-1.jpg"
-              alt="Alumnos de Fuego Latino compitiendo en Mambolee One"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="relative aspect-square rounded-xl overflow-hidden">
-            <Image
-              src="/images/brisa-cup/brisa2025_1.jpeg"
-              alt="Equipo Fuego Latino con medallas en Brisa Latin Cup"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        </div>
-      </section>
-
       <hr className="border-gray-100 mx-6" />
 
       {/* SUCURSALES */}
@@ -184,18 +154,37 @@ export default function SanPedroPage() {
                     → Próximo: {s.moving.newAddressShort}
                   </p>
                 )}
-                {s.mapsUrl && (
-                  <Link
-                    href={s.mapsUrl}
-                    target="_blank"
-                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-[#d05020] hover:text-[#b04010] transition-colors"
-                  >
-                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    Ver en Google Maps
-                  </Link>
+                {s.styles && (
+                  <p className="mt-3 text-xs text-gray-500">
+                    <span className="font-semibold text-gray-600">Estilos:</span> {s.styles}
+                  </p>
                 )}
+                <div className="mt-4 flex items-center gap-4">
+                  {s.mapsUrl && (
+                    <Link
+                      href={s.mapsUrl}
+                      target="_blank"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-[#d05020] hover:text-[#b04010] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                      Ver en Google Maps
+                    </Link>
+                  )}
+                  {s.facebookUrl && (
+                    <Link
+                      href={s.facebookUrl}
+                      target="_blank"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-[#d05020] hover:text-[#b04010] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.8c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12Z" />
+                      </svg>
+                      Facebook
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -288,8 +277,8 @@ export default function SanPedroPage() {
             <Image
               src="/syb-fuego-logo.jpg"
               alt="Salsa y Bachata Fuego"
-              width={80}
-              height={28}
+              width={120}
+              height={42}
               className="object-contain"
             />
             <p className="text-xs text-gray-400">San Pedro Garza García, N.L.</p>
