@@ -20,15 +20,12 @@ export type Location = {
 
 export const sucursales = [
   {
-    id: "san-pedro",
-    name: "San Pedro Garza García",
-    address: "118 Plaza Kiarah, C. Murcia, Col. San Agustín, San Pedro Garza García, N.L.",
-    addressShort: "Plaza Kiarah, San Pedro",
-    moving: {
-      active: true,
-      newAddressShort: "Av. Real San Agustín 302, Plaza Saaghi",
-    },
+    id: "san-agustin",
+    name: "San Agustín",
+    address: "Av. Real San Agustín 302, Plaza Saaghi, Residencial San Agustín 1er Sector, 66260 San Pedro Garza García, N.L.",
+    addressShort: "Av. Real San Agustín 302, Plaza Saaghi",
     mapsUrl: "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
+    instagramUrl: "https://www.instagram.com/salsaybachatafuego/",
     styles: "Salsa, Bachata y Cumbia",
     comingSoon: false,
   },
@@ -37,9 +34,9 @@ export const sucursales = [
     name: "San Jerónimo",
     address: "Blvd. Puerta del Sol 1009, Col. Colinas de San Jerónimo, Monterrey, N.L. 64630",
     addressShort: "Blvd. Puerta del Sol 1009, San Jerónimo",
-    moving: null,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Blvd.+Puerta+del+Sol+1009,+Colinas+de+San+Jer%C3%B3nimo,+Monterrey",
     facebookUrl: "https://www.facebook.com/p/Salsa-y-Bachata-Fuego-Sucursal-San-Jer%C3%B3nimo-61590396188766/",
+    instagramUrl: "https://www.instagram.com/salsa_y_bachata_fuego_san_jemo/",
     styles: "Salsa, Bachata y Cumbia",
     comingSoon: false,
   },
@@ -51,21 +48,14 @@ export const locations: Record<string, Location> = {
     slug: "salsa-y-bachata-fuego",
     municipality: "San Pedro Garza García",
     address:
-      "118 Plaza Kiarah, C. Murcia, Col. San Agustín, 66278 San Pedro Garza García, N.L.",
-    addressShort: "Plaza Kiarah, San Pedro Garza García",
+      "Av. Real San Agustín 302, Plaza Saaghi, Residencial San Agustín 1er Sector, 66260 San Pedro Garza García, N.L.",
+    addressShort: "Av. Real San Agustín 302, Plaza Saaghi",
     phone: "81 2016 6663",
     waNumber: "5218110404188",
     waMessage:
-      "Hola, quiero agendar una clase muestra en Salsa y Bachata Fuego San Pedro.",
-    instagram: null, // pendiente confirmar — @sb_sanpedro es otra escuela diferente
+      "Hola, quiero agendar una clase muestra en Salsa y Bachata Fuego San Agustín.",
+    instagram: "salsaybachatafuego",
     mapsUrl:
       "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
-    moving: {
-      active: true,
-      newAddress:
-        "Av. Real San Agustín 302, Residencial San Agustín 1er Sector, 66260 San Pedro Garza García, N.L.",
-      newAddressShort: "Av. Real San Agustín 302",
-      plazaName: "Plaza Saaghi",
-    },
   },
 };

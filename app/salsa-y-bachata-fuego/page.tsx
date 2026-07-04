@@ -52,17 +52,6 @@ export default function SanPedroPage() {
         </div>
       </header>
 
-      {/* MUDANZA BANNER */}
-      {loc.moving?.active && (
-        <div className="bg-gray-50 border-b border-gray-200">
-          <div className="mx-auto max-w-6xl px-6 py-2.5 text-sm text-gray-600">
-            <span className="font-medium text-gray-900">Próximamente:</span>{" "}
-            nos mudamos a <span className="font-semibold">{loc.moving.plazaName}</span>{" "}
-            — {loc.moving.newAddressShort}
-          </div>
-        </div>
-      )}
-
       {/* HERO */}
       <section className="px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
         <div className="mx-auto max-w-6xl">
@@ -77,8 +66,8 @@ export default function SanPedroPage() {
                 <span className="text-[#d05020]">Fuego</span>
               </h1>
               <p className="mt-8 text-lg text-gray-500 max-w-md leading-relaxed">
-                Aprende a bailar en San Pedro. Grupos reducidos, instructores
-                con experiencia y comunidad real desde el primer día.
+                Aprende a bailar en San Agustín o San Jerónimo. Grupos reducidos,
+                instructores con experiencia y comunidad real desde el primer día.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-3">
                 <Link
@@ -101,7 +90,7 @@ export default function SanPedroPage() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl shadow-gray-200/60 ring-1 ring-gray-100">
                 <Image
                   src="/images/fuego-clases/syb-hero.jpg"
-                  alt="Clase de baile en Salsa y Bachata Fuego, San Pedro"
+                  alt="Clase de baile en Salsa y Bachata Fuego"
                   fill
                   priority
                   className="object-cover"
@@ -148,11 +137,6 @@ export default function SanPedroPage() {
                 ) : (
                   <p className="text-sm text-gray-400 italic">Dirección por confirmar</p>
                 )}
-                {s.moving?.active && (
-                  <p className="mt-2 text-xs text-[#d05020] font-medium">
-                    → Próximo: {s.moving.newAddressShort}
-                  </p>
-                )}
                 {s.styles && (
                   <p className="mt-3 text-xs text-gray-500">
                     <span className="font-semibold text-gray-600">Estilos:</span> {s.styles}
@@ -181,6 +165,18 @@ export default function SanPedroPage() {
                         <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.8c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12Z" />
                       </svg>
                       Facebook
+                    </Link>
+                  )}
+                  {s.instagramUrl && (
+                    <Link
+                      href={s.instagramUrl}
+                      target="_blank"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-[#d05020] hover:text-[#b04010] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-4.35.2-6.78 2.62-6.98 6.98C0.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.35 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8Zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z" />
+                      </svg>
+                      Instagram
                     </Link>
                   )}
                 </div>
@@ -280,7 +276,7 @@ export default function SanPedroPage() {
               height={42}
               className="object-contain"
             />
-            <p className="text-xs text-gray-400">San Pedro Garza García, N.L.</p>
+            <p className="text-xs text-gray-400">San Agustín · San Jerónimo, N.L.</p>
           </div>
           <div className="flex items-center gap-6 text-xs text-gray-400">
             <Link href={waLink} target="_blank" className="hover:text-gray-600 transition-colors">
