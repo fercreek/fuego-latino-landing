@@ -29,7 +29,7 @@ export const sucursales = [
       newAddressShort: "Av. Real San Agustín 302, Plaza Saaghi",
     },
     mapsUrl: "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
-    styles: "Salsa, Bachata, Urbano y Jazz & Contempo",
+    styles: "Salsa, Bachata y Cumbia",
     comingSoon: false,
   },
   {

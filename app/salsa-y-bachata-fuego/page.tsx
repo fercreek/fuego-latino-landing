@@ -11,8 +11,7 @@ const waLink = `https://wa.me/${loc.waNumber}?text=${encodeURIComponent(loc.waMe
 const styles = [
   { num: "01", name: "Salsa", desc: "On1 y On2, todos los niveles. Del básico al performance." },
   { num: "02", name: "Bachata", desc: "Sensual y tradicional. Conexión, técnica y musicalidad." },
-  { num: "03", name: "Urbano", desc: "Reggaeton, hip-hop y fusión. Energía pura." },
-  { num: "04", name: "Jazz & Contempo", desc: "Técnica clásica moderna. Expresión corporal y estilo." },
+  { num: "03", name: "Cumbia", desc: "Ritmo y sabor tradicional. Para bailar en pareja o en grupo." },
 ];
 
 export default function SanPedroPage() {
@@ -202,7 +201,7 @@ export default function SanPedroPage() {
           <h2 className="mb-12 text-3xl sm:text-4xl font-black tracking-tight text-gray-900">
             ¿Qué bailamos?
           </h2>
-          <div className="grid gap-px bg-gray-100 sm:grid-cols-2 lg:grid-cols-4 rounded-xl overflow-hidden border border-gray-100">
+          <div className="grid gap-px bg-gray-100 sm:grid-cols-3 rounded-xl overflow-hidden border border-gray-100">
             {styles.map((s) => (
               <div
                 key={s.name}
