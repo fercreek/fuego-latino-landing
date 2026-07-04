@@ -27,13 +27,13 @@ export default function SanPedroPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-[#fdfaf8] text-gray-900">
 
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-50 bg-[#fdfaf8]/95 backdrop-blur-xl border-b border-gray-100">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <Link href="https://www.fuegolatino.dance" className="flex items-center gap-3">
-            <div className="relative w-36 h-12 shrink-0">
+            <div className="relative w-48 h-16 shrink-0">
               <Image
                 src="/syb-fuego-logo.jpg"
                 alt="Salsa y Bachata Fuego"
@@ -52,9 +52,21 @@ export default function SanPedroPage() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
-        <div className="mx-auto max-w-6xl">
+      {/* HERO — fondo con energía de marca, no plano */}
+      <section className="relative px-6 pt-16 pb-12 sm:pt-24 sm:pb-16 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-[#d05020]/10 blur-3xl" />
+          <div className="absolute top-40 right-0 w-[380px] h-[380px] rounded-full bg-[#d05020]/[0.07] blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #d05020 1.5px, transparent 1.5px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+        </div>
+        <div className="relative mx-auto max-w-6xl">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
             {/* Texto */}
             <div className="flex-1 min-w-0">
