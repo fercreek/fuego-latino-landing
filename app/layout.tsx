@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     siteName: "Fuego Latino Dance Studio",
     images: [
       {
-        url: "https://fuegolatino.dance/images/studio-fuego.jpg",
+        url: "https://fuegolatino.dance/images/og-share.jpg",
         width: 1200,
         height: 630,
         alt: "Fuego Latino Dance Studio - Estudio de baile latino moderno en Monterrey, Nuevo León",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
       "Academia de baile en Monterrey: salsa, bachata, urbano, jazz y danza aérea. Grupos reducidos, instructores profesionales y clase muestra gratis. ¡Reserva hoy!",
     images: [
       {
-        url: "https://fuegolatino.dance/images/studio-fuego.jpg",
+        url: "https://fuegolatino.dance/images/og-share.jpg",
         width: 1200,
         height: 630,
         alt: "Fuego Latino Dance Studio - Estudio de baile latino moderno en Monterrey",
@@ -139,7 +139,7 @@ export default function RootLayout({
     url: "https://fuegolatino.dance",
     logo: "https://fuegolatino.dance/logo.png",
     image: [
-      "https://fuegolatino.dance/images/studio-fuego.jpg",
+      "https://fuegolatino.dance/images/og-share.jpg",
       "https://fuegolatino.dance/logo.png",
     ],
     address: {
