@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { locations, sucursales } from "../lib/locations";
-import DanceLottie from "../components/DanceLottie";
 
 const loc = locations["salsa-y-bachata-fuego"];
 const waLink = `https://wa.me/${loc.waNumber}?text=${encodeURIComponent(loc.waMessage)}`;
@@ -98,10 +97,52 @@ export default function SanPedroPage() {
                 </Link>
               </div>
             </div>
-            {/* Lottie */}
+            {/* Foto real de clase — reemplaza la animación genérica por prueba social real */}
             <div className="w-full lg:w-[480px] shrink-0">
-              <DanceLottie className="w-full aspect-square" />
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl shadow-gray-200/60 ring-1 ring-gray-100">
+                <Image
+                  src="/images/fuego-clases/clase2.jpeg"
+                  alt="Clase de baile en Salsa y Bachata Fuego, San Pedro"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 backdrop-blur px-3 py-1.5">
+                  <p className="text-xs font-bold text-gray-900">Comunidad real, desde el primer día</p>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GALERÍA — comunidad → progreso → resultados, prueba visual real */}
+      <section className="px-6 pb-16 sm:pb-20">
+        <div className="mx-auto max-w-6xl grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="relative aspect-square rounded-xl overflow-hidden">
+            <Image
+              src="/images/fuego-clases/clase1.jpeg"
+              alt="Comunidad de Salsa y Bachata Fuego en clase"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="relative aspect-square rounded-xl overflow-hidden">
+            <Image
+              src="/images/fuego-1.jpg"
+              alt="Alumnos de Fuego Latino compitiendo en Mambolee One"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="relative aspect-square rounded-xl overflow-hidden">
+            <Image
+              src="/images/brisa-cup/brisa2025_1.jpeg"
+              alt="Equipo Fuego Latino con medallas en Brisa Latin Cup"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       </section>
