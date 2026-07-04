@@ -18,10 +18,34 @@ export type Location = {
   comingSoon?: boolean;
 };
 
+export const sucursales = [
+  {
+    id: "san-pedro",
+    name: "San Pedro Garza García",
+    address: "118 Plaza Kiarah, C. Murcia, Col. San Agustín, San Pedro Garza García, N.L.",
+    addressShort: "Plaza Kiarah, San Pedro",
+    moving: {
+      active: true,
+      newAddressShort: "Av. Real San Agustín 302, Plaza Saaghi",
+    },
+    mapsUrl: "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
+    comingSoon: false,
+  },
+  {
+    id: "san-jeronimo",
+    name: "San Jerónimo",
+    address: null,
+    addressShort: "Fenix Dance Center",
+    moving: null,
+    mapsUrl: null,
+    comingSoon: true,
+  },
+];
+
 export const locations: Record<string, Location> = {
-  "san-pedro": {
+  "salsa-y-bachata-fuego": {
     name: "Salsa y Bachata Fuego",
-    slug: "san-pedro",
+    slug: "salsa-y-bachata-fuego",
     municipality: "San Pedro Garza García",
     address:
       "118 Plaza Kiarah, C. Murcia, Col. San Agustín, 66278 San Pedro Garza García, N.L.",
@@ -30,7 +54,7 @@ export const locations: Record<string, Location> = {
     waNumber: "5218110404188",
     waMessage:
       "Hola, quiero agendar una clase muestra en Salsa y Bachata Fuego San Pedro.",
-    instagram: "sb_sanpedro",
+    instagram: null, // pendiente confirmar — @sb_sanpedro es otra escuela diferente
     mapsUrl:
       "https://www.google.com/maps/place/Salsa+y+Bachata+Fuego/@25.6337583,-100.3318433,17z",
     moving: {

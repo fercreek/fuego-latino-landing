@@ -356,6 +356,23 @@ a {
   animation: gradient-shift 3s ease infinite;
 }
 
+/* === SyB Fuego theme — marca blanca, fondo claro === */
+.syb-fuego-theme {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-flame-50: #fff0e8;
+  --color-flame-100: #fde5d5;
+  --color-flame-200: #f5b89a;
+  --color-flame-300: #e87050;
+  --color-flame-400: #d86038;
+  --color-flame-500: #d05020;
+  --color-flame-600: #b04010;
+  --color-flame-700: #803010;
+  --color-flame-800: #501000;
+  --color-flame-950: #1a0500;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
