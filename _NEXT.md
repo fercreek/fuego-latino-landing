@@ -1,3 +1,7 @@
+> ⚠️ **STALE — 37 días sin actualizar** (última vez 2026-07-04).
+> **Las tareas vivas de este proyecto están en `focus`** (1 en `landings`): `make wip` · `make next`.
+> _Marcado 2026-08-10 al reconciliar los pickup points; el contenido de abajo NO se tocó._
+
 # NEXT — fuego-latino-landing
 > Update: 2026-07-04 · Deploy: fuegolatino.dance · Repo: ~/Documents/landings/fuego-latino-landing
 
