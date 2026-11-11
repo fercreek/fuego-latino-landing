@@ -22,6 +22,7 @@ Resumen de la revisión realizada y acciones aplicadas.
 
 1. **Dirección en JSON-LD:** de texto genérico a la dirección real:  
    `Av. Chapultepec 724, Calle 7ma Zona, Col. Caracol`.
+   **11-nov-2026:** el estudio se mudó a `Las Pampas 903, Residencial la Española, 64820` (JSON-LD, geo y mapa actualizados; igual en la página de Facebook).
 2. **Horarios en JSON-LD:** alineados con la web:  
    - Lunes y Miércoles 20:00–22:00.  
    - Martes 19:00–22:00 (incluye Jazz Lírico, Urbano, Entrenamiento Bachata).  
