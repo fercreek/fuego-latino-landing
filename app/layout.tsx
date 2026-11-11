@@ -120,8 +120,8 @@ export const metadata: Metadata = {
     "yandex-verification": "", // Agregar código de Yandex cuando esté disponible
     "geo.region": "MX-NLE",
     "geo.placename": "Monterrey, Nuevo León",
-    "geo.position": "25.6714;-100.3101",
-    "ICBM": "25.6714, -100.3101",
+    "geo.position": "25.6607;-100.2754",
+    "ICBM": "25.6607, -100.2754",
   },
 };
 
@@ -147,7 +147,8 @@ export default function RootLayout({
       addressLocality: "Monterrey",
       addressRegion: "Nuevo León",
       addressCountry: "MX",
-      streetAddress: "Av. Chapultepec 724, Calle 7ma Zona, Col. Caracol",
+      streetAddress: "Las Pampas 903, Residencial la Española",
+      postalCode: "64820",
     },
     telephone: "+52 1 81 1040 4188",
     priceRange: "$$",
@@ -173,10 +174,10 @@ export default function RootLayout({
     ],
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "25.6714",
-      longitude: "-100.3101",
+      latitude: "25.6607",
+      longitude: "-100.2754",
     },
-    hasMap: "https://maps.google.com/?q=Av.+Chapultepec+724+Caracol+Monterrey",
+    hasMap: "https://maps.google.com/?q=Las+Pampas+903,+Residencial+la+Espa%C3%B1ola,+Monterrey",
     sameAs: [
       "https://www.instagram.com/fuegolatino.dancestudio/",
       "https://www.facebook.com/FuegoLatinoDS",

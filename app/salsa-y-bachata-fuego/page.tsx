@@ -304,7 +304,7 @@ export default function SanPedroPage() {
               </Link>
             )}
             <Link href="https://www.fuegolatino.dance" className="hover:text-gray-600 transition-colors">
-              Sede Chapultepec
+              Fuego Latino Dance Studio
             </Link>
           </div>
         </div>
